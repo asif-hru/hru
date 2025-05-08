@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/common.css" />
+
+
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+     <!-- Font -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <title>Hello, world!</title>
+
+    <style>
+        .bed {
+            padding: 3px 0;
+            border-radius: 8px;
+            color: #fff;
+            margin: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .bed h2 {
+            padding: 0 5px 3px;
+            font-size: 11px;
+            font-weight: 600;
+
+        }
+
+        .bed p {
+            font-size: 11px;
+            font-weight: 500;
+            padding: 2px 5px 0;
+            border-top: 1.5px solid #fff;
+            text-transform: uppercase;
+        }
+
+        .bed-in-maintain {
+            background-color: #fd7e14;
+        }
+
+        .overflow-bed-info {
+            max-height: 110px;
+            overflow: auto;
+        }
+
+        .bed-status {
+            width: 10px;
+            height: 10px;
+            border-radius: 100px;
+        }
+        .bed-status-text {
+            font-size: 12px;
+            display: inline-block;
+        }
+        .bg-orange {
+            background-color: #fd7e14;
+        }
+
+        .title-select {
+            width: 60px;
+            padding: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            border-right: none;
+            outline: none;
+            background-color: white;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+        }
+        .name-input:focus {
+            outline: unset;
+        }
+
+        .profile-pic {
+            width: 60px;
+            height: 60px;
+            background-color: #e9ecef;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        .upload-btn {
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .upload-btn:hover {
+            /* background-color: #000;
+            filter: invert(1) hue-rotate(180deg); */
+        }
+
+        .toggle-image-hover:hover img:first-child {
+            display: none;
+        }
+        .toggle-image-hover:hover img:last-child {
+            display: block !important;
+        }
+
+        .section-header {
+            background-color: #f8f9fa;
+            padding: 6px;
+            margin-bottom: 5px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .overflow-form {
+            max-height: 150px;
+            overflow: auto;
+        }
+        .header-yellow {
+            background-color: #ffc107;
+            padding: 5px 12px;
+            font-size: 11px;
+            margin-bottom: 7px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-auto">
+                <div class="fw-bold header-yellow py-2 d-flex align-items-center mb-0"><img src="./assets/user.png" class="me-2" width="15" />Patient Information</div>
+            </div>
+            <div class="col">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <input type="text" placeholder="Healthray ID" required>
+                    </div>
+                    <div class="col-auto">
+                        <div class="d-flex flex-column input-wrapper mb-1">
+                            <label>Registration Date*</label>
+                            <input type="date" class="date-picker"  min="1900-01-01" max="2099-12-31" placeholder="From Date">
+                        </div>
+                    </div>
+                    <div class="col-auto d-flex align-items-center">
+                        <input type="text" placeholder="ABHA Mobile No." required>
+                        <img class="ms-2" style="cursor: pointer;" src="./assets/qr-code.png" width="18" alt="scan" />
+                    </div>
+                    <div class="col-auto">
+                        <a class="text-white text-decoration-none btn btn-primary btn-sm" href="./dashboard.html">Create ABHA</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-12">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Patient Details
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body p-0 px-2 py-2">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="profile-pic mx-auto">
+                                            <img width="30px" src="./assets/user.png" alt="patient profile" />
+                                        </div>
+                                        <div class="d-flex justify-content-center gap-2 mb-3">
+                                            <button type="button" class="btn btn-outline-primary upload-btn toggle-image-hover">
+                                                <img width="20px" src="./assets/camera.png" alt="patient profile" />
+                                                <img width="20px" class="d-none" src="./assets/camera-white.png" alt="patient profile" />
+                                            </button>
+                                            <button type="button" class="btn btn-outline-primary upload-btn toggle-image-hover">
+                                                <img width="18px" src="./assets/upload.png" alt="patient profile" />
+                                                <img width="18px" class="d-none" src="./assets/upload-white.png" alt="patient profile" />
+                                            </button>
+                                        </div>                  
+                                    </div>
+                                    <div class="row align-items-end">
+                                        <div class="col-3">
+                                            <div class="position-relative">
+                                                <select class="title-select">
+                                                    <option>select</option>
+                                                    <option>Mr.</option>
+                                                    <option>Mrs.</option>
+                                                    <option>Ms.</option>
+                                                    <option>Dr.</option>
+                                                </select>
+                                                <div class="ps-3">
+                                                    <input type="text" class="ps-5 name-input" placeholder="First Name *" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div>
+                                                <input placeholder="Father/Husband Name" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div>
+                                                <input placeholder="Last Name/Surname" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div>
+                                                <input type="text" placeholder="Guardian Name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center mt-3">
+                                    <div class="col-3">
+                                        <div class="input-wrapper">
+                                            <label>Date of Birth</label>
+                                            <input type="date">
+                                        </div>
+                                    </div>
+        
+                                    <div class="col-3">
+                                        <div>
+                                            <label class="gender-label">Gender</label>
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <div>
+                                                    <input type="radio" name="gender" id="male" value="male">
+                                                    <label style="font-size: 14px;" for="male">Male</label>
+                                                </div>
+                                                <div>
+                                                    <input type="radio" name="gender" id="female" value="female">
+                                                    <label style="font-size: 14px;" for="female">Female</label>
+                                                </div>
+                                                <div>
+                                                    <input type="radio" name="gender" id="other" value="other">
+                                                    <label style="font-size: 14px;" for="other">Other</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="col-3">
+                                        <div class="select-wrapper">
+                                            <label class="form-label">Blood Group</label>
+                                            <select>
+                                                <option hidden></option>
+                                                <option>A+</option>
+                                                <option>A-</option>
+                                                <option>B+</option>
+                                                <option>B-</option>
+                                                <option>AB+</option>
+                                                <option>AB-</option>
+                                                <option>O+</option>
+                                                <option>O-</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Contact Details
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body p-0 px-2 py-2">
+                                <div class="row align-items-end">
+                                    <div class="col-3">
+                                        <div class="mb-3 select-wrapper">
+                                            <label class="form-label">Country Code *</label>
+                                            <select>
+                                                <option value="+91">+91</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="mb-3">
+                                            <input type="tel" placeholder="Mobile Number *" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="mb-3">
+                                            <input type="email" placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="mb-3">
+                                            <input type="text" placeholder="House/Flat Number">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row align-items-end">
+                                    <div class="col-3">
+                                        <div class="mb-3">
+                                            <input type="text" placeholder="City">
+                                        </div>
+                                    </div>
+        
+                                    <div class="col-3">
+                                        <div class="mb-3 select-wrapper">
+                                            <label class="form-label">State</label>
+                                            <select>
+                                                <option hidden></option>
+                                            </select>
+                                        </div>
+                                    </div>
+        
+                                    <div class="col-3">
+                                        <div class="mb-3 select-wrapper">
+                                            <label class="form-label">Country</label>
+                                            <select>
+                                                <option hidden></option>
+                                                <option value="india">India</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Kin Details
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body p-0 px-2 py-2">
+                                <div class="row align-items-end">
+                                    <div class="col-3">
+                                        <div class="position-relative">
+                                            <select class="title-select">
+                                                <option>select</option>
+                                                <option>Mr.</option>
+                                                <option>Mrs.</option>
+                                                <option>Ms.</option>
+                                                <option>Dr.</option>
+                                            </select>
+                                            <div class="ps-3">
+                                                <input type="text" class="ps-5 name-input" placeholder="First Name *" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="mb-0 select-wrapper">
+                                            <label>Relation</label>
+                                            <select>
+                                                <option hidden></option>
+                                                <option value="">Brother</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Patient Identity Details
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body p-0 px-2 py-2">
+                                <div class="row align-items-end">
+                                    <div class="col-3">
+                                        <div class="d-flex align-items-center">
+                                            <label style="font-size: 12px;font-weight: 600;">PAN Card PDF:</label>
+                                            <div class="d-flex justify-content-center gap-2 ms-3">
+                                                <button type="button" class="btn btn-outline-primary upload-btn toggle-image-hover">
+                                                    <img width="20px" src="./assets/camera.png" alt="patient profile" />
+                                                    <img width="20px" class="d-none" src="./assets/camera-white.png" alt="patient profile" />
+                                                </button>
+                                                <button type="button" class="btn btn-outline-primary upload-btn toggle-image-hover">
+                                                    <img width="18px" src="./assets/upload.png" alt="patient profile" />
+                                                    <img width="18px" class="d-none" src="./assets/upload-white.png" alt="patient profile" />
+                                                </button>
+                                            </div> 
+                                        </div>
+                                    </div>
+        
+                                    <div class="col-3">
+                                        <div class="d-flex align-items-center">
+                                            <label style="font-size: 12px;font-weight: 600;">Aadhar Card PDF:</label>
+                                            <div class="d-flex justify-content-center gap-2 ms-3">
+                                                <button type="button" class="btn btn-outline-primary upload-btn toggle-image-hover">
+                                                    <img width="20px" src="./assets/camera.png" alt="patient profile" />
+                                                    <img width="20px" class="d-none" src="./assets/camera-white.png" alt="patient profile" />
+                                                </button>
+                                                <button type="button" class="btn btn-outline-primary upload-btn toggle-image-hover">
+                                                    <img width="18px" src="./assets/upload.png" alt="patient profile" />
+                                                    <img width="18px" class="d-none" src="./assets/upload-white.png" alt="patient profile" />
+                                                </button>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="select-wrapper mb-0">
+                                            <label>Nationality</label>
+                                            <select>
+                                                <option hidden></option>
+                                                <option>Indian</option>
+                                            </select>
+                                        </div>
+                                    </div>
+        
+                                    <div class="col-3">
+                                        <div class="select-wrapper mb-0">
+                                            <label>National Id Type</label>
+                                            <select>
+                                                <option hidden></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="row align-items-end mt-3">
+                                    <div class="col-3">
+                                        <input type="text" placeholder="National Id Number">
+                                    </div>
+        
+                                    <div class="col-3">
+                                        <div class="d-flex align-items-center">
+                                            <label style="font-size: 12px;font-weight: 600;">National Id Image:</label>
+                                            <div class="d-flex justify-content-center gap-2 ms-3">
+                                                <button type="button" class="btn btn-outline-primary upload-btn toggle-image-hover">
+                                                    <img width="20px" src="./assets/camera.png" alt="patient profile" />
+                                                    <img width="20px" class="d-none" src="./assets/camera-white.png" alt="patient profile" />
+                                                </button>
+                                                <button type="button" class="btn btn-outline-primary upload-btn toggle-image-hover">
+                                                    <img width="18px" src="./assets/upload.png" alt="patient profile" />
+                                                    <img width="18px" class="d-none" src="./assets/upload-white.png" alt="patient profile" />
+                                                </button>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                Payer details
+                            </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body p-0 px-2 py-2">
+                                <div class="row align-items-end">
+                                    <div class="col-3">
+                                        <div class="mb-3 select-wrapper">
+                                            <label class="form-label">Payer Type</label>
+                                            <select>
+                                                <option hidden></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="mb-3 select-wrapper">
+                                            <label class="form-label">Payer Name/TPA</label>
+                                            <select>
+                                                <option hidden></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="mb-3 select-wrapper">
+                                            <label class="form-label">Insurance</label>
+                                            <select>
+                                                <option hidden></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="mb-3 select-wrapper">
+                                            <label class="form-label">Payment Type</label>
+                                            <select>
+                                                <option hidden></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="row align-items-end">
+                                    <div class="col-3">
+                                        <div class="mb-3">
+                                            <input type="text" placeholder="Policy Number">
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="mb-3">
+                                            <input type="text" placeholder="Card Number">
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="mb-3">
+                                            <input type="text" placeholder="Plan/Class">
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="mb-3 input-wrapper">
+                                            <label>Valid From</label>
+                                            <input type="date" />
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="mb-3 input-wrapper">
+                                            <label>Valid To</label>
+                                            <input type="date" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingSix">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                               other info
+                            </button>
+                        </h2>
+                        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body p-0 px-2 py-2">
+                                <div class="tab-content p-1 border border-0">
+                                    <div class="tab-pane fade show active" id="referred">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="section-header">Referred By</div>
+                                                <div class="overflow-form">
+                                                <div class="mb-3 select-wrapper">
+                                                    <label class="form-label">Provider</label>
+                                                    <select>
+                                                        <option hidden></option>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3 select-wrapper">
+                                                    <label class="form-label">Referred By</label>
+                                                    <select>
+                                                        <option hidden></option>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3 select-wrapper">
+                                                    <label class="form-label">Speciality</label>
+                                                    <select>
+                                                        <option hidden></option>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3 select-wrapper">
+                                                    <label class="form-label">Referred To</label>
+                                                    <select>
+                                                        <option hidden></option>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3 input-wrapper">
+                                                    <label class="form-label">Country Code</label>
+                                                    <input type="text" />
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="section-header">Occupation</div>
+                                                <div class="overflow-form">
+                                                <div class="mb-3">
+                                                    <input type="text" placeholder="Occupation Present">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <input type="text" placeholder="Occupation Present Since">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <input type="text" placeholder="Occupation Past">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <input type="text" placeholder="Occupation Past Since">
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingSeven">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                Available Patients
+                            </button>
+                        </h2>
+                        <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body p-0 px-2 py-2">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <img width="70" src="./assets/paper.png" alt="search icon" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid position-fixed bottom-0 w-100 py-2 bg-white" style="z-index: 100;">
+        <div class="row align-items-center justify-content-md-between justify-content-center">
+            <div class="col-12 col-md-8 col-lg-5">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input me-2 mb-1" type="checkbox" id="generateABHA">
+                    <label class="form-check-label" for="generateABHA">Generate ABHA Number</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input me-2 mb-1" type="checkbox" id="labelPrint">
+                    <label class="form-check-label" for="labelPrint">Label Print</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input me-2 mb-1" type="checkbox" id="needVerify">
+                    <label class="form-check-label" for="needVerify">Need To Verify Details?</label>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-7 text-center mt-2 mt-md-0 text-md-end">
+                <a class="text-white text-decoration-none btn btn-secondary" href="./dashboard.html">Cancel</a>
+                <a class="text-white text-decoration-none btn btn-primary" href="./dashboard.html">Add Patient</a>
+            </div>
+        </div>        
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

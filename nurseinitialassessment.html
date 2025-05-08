@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patient Information</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/common.css" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .combobox-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .clear-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #aaa;
+            font-weight: bold;
+        }
+
+        .input-group-custom {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .input-group-custom input::placeholder {
+            text-transform: capitalize;
+        }
+
+        .input-group-custom .combobox-wrapper {
+            flex: 1;
+        }
+
+        .collapsible-section {
+            margin-top: .5rem;
+        }
+
+        .collapsible-header {
+            cursor: pointer;
+            font-weight: bold;
+            user-select: none;
+        }
+
+        .collapsible-content {
+            margin-top: .3rem;
+            display: none;
+        }
+
+        .collapsible-content.show {
+            display: block;
+        }
+
+        input::-webkit-calendar-picker-indicator {
+            display: none;
+        }
+        .fixed-button {
+            z-index: 1000;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 0;
+        }
+    </style>
+</head>
+
+<body class="nursing-initial-assessment-body">
+    <div class="container-fluid pt-2">
+        <h1 class="heading text-center heading-color">IPD Initial Assessment</h1>
+        <div class="col-12">
+            <div class="card shadow-sm border-0 mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="d-flex">
+                                <div class="patient-avatar">R</div>
+                                <div>
+                                    <div class="fw-bold">MR. RAJKUMAR SHINDE, 36 Y, M</div>
+                                    <div class="small-text">+91 1212121212</div>
+                                    <div class="small-text">REF: DR. HARSH</div>
+                                    <div class="small-text">UHID: HC01949</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="small-text">BED No/ Ward Name: S-4/ Special one</div>
+                            <div class="small-text">IPD NO: IPD-842</div>
+                            <div class="small-text heading-color">PAYER NAME: SBI HEALTH INSURANCE</div>
+                            <div class="small-text">ADMITTING DR: HEALTHRAY AHMEDABAD, DR. YOGESH B...</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="row">
+                                <div class="col-7">
+                                    <div class="small-text">DOA: 10/04/2025 03:53 PM - TODAY</div>
+                                    <div class="small-text">DIAGNOSIS: ---</div>
+                                    <div class="small-text">CONSULTANT DR.: HARSH</div>
+                                </div>
+                                <div class="col-5">
+                                    <button class="common-btn primary-bg-color">Save</button>
+                                    <button class="common-btn primary-bg-color">Save & Print</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Content Area -->
+        <div class="row">
+            <div class="col-12">
+                <div class="input-group-custom">
+                    <!-- Input 1 -->
+                    <div class="combobox-wrapper">
+                        <input list="options1" class="" placeholder="Search Complaints"
+                            oninput="toggleClearBtn(this)">
+                        <span class="clear-btn" onclick="clearInput(this)">×</span>
+                        <datalist id="options1">
+                            <option value="Option A1">
+                            <option value="Option B1">
+                            <option value="Option C1">
+                        </datalist>
+                    </div>
+
+                    <!-- Input 2 -->
+                    <div class="combobox-wrapper">
+                        <input list="options2" class="" placeholder="Duration"
+                            oninput="toggleClearBtn(this)">
+                        <span class="clear-btn" onclick="clearInput(this)">×</span>
+                        <datalist id="options2">
+                            <option value="Option A2">
+                            <option value="Option B2">
+                            <option value="Option C2">
+                        </datalist>
+                    </div>
+
+                    <!-- Input 3 -->
+                    <div class="combobox-wrapper">
+                        <input list="options3" class="" placeholder="Detail"
+                            oninput="toggleClearBtn(this)">
+                        <span class="clear-btn" onclick="clearInput(this)">×</span>
+                        <datalist id="options3">
+                            <option value="Option A3">
+                            <option value="Option B3">
+                            <option value="Option C3">
+                        </datalist>
+                    </div>
+                </div>
+
+                <div class="input-group-custom mt-2">
+                    <!-- Input 1 -->
+                    <div class="combobox-wrapper">
+                        <input list="options1" class="" placeholder="Search Complaints"
+                            oninput="toggleClearBtn(this)">
+                        <span class="clear-btn" onclick="clearInput(this)">×</span>
+                        <datalist id="options1">
+                            <option value="Option A1">
+                            <option value="Option B1">
+                            <option value="Option C1">
+                        </datalist>
+                    </div>
+
+                    <!-- Input 2 -->
+                    <div class="combobox-wrapper">
+                        <input list="options2" class="" placeholder="Duration"
+                            oninput="toggleClearBtn(this)">
+                        <span class="clear-btn" onclick="clearInput(this)">×</span>
+                        <datalist id="options2">
+                            <option value="Option A2">
+                            <option value="Option B2">
+                            <option value="Option C2">
+                        </datalist>
+                    </div>
+
+                    <!-- Input 3 -->
+                    <div class="combobox-wrapper">
+                        <input list="options3" class="" placeholder="Detail"
+                            oninput="toggleClearBtn(this)">
+                        <span class="clear-btn" onclick="clearInput(this)">×</span>
+                        <datalist id="options3">
+                            <option value="Option A3">
+                            <option value="Option B3">
+                            <option value="Option C3">
+                        </datalist>
+                    </div>
+                </div>
+                <div class="input-group-custom mt-2">
+                    <!-- Input 1 -->
+                    <div class="combobox-wrapper">
+                        <input list="options1" class="" placeholder="Search Complaints"
+                            oninput="toggleClearBtn(this)">
+                        <span class="clear-btn" onclick="clearInput(this)">×</span>
+                        <datalist id="options1">
+                            <option value="Option A1">
+                            <option value="Option B1">
+                            <option value="Option C1">
+                        </datalist>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="collapsible-section">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ Present Complaints:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search Past History"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="collapsible-section">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ Past History:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search Past History"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="collapsible-section">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ Infection in month preceding onset:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search Infection in month preceding onset"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="collapsible-section">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ Systemic Examination:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search Systemic Examination"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="collapsible-section">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ Personal History:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search Personal History"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="collapsible-section">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ S / E:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search S / E"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="collapsible-section">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ G / E:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search G / E"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="collapsible-section">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ Lab / Pathology TEST Requested:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search Lab / Pathology TEST Requested"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="collapsible-section">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ Provisional Diagnose:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search Provisional Diagnose"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="collapsible-section">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ Diagnosis:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search Diagnosis"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="collapsible-section">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ dr no:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search dr no"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="collapsible-section">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ Physiotherapy:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search Physiotherapy"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="collapsible-section">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ Summary:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+                        <div class="heading-color small-text">R<sub>x</sub></div>
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search Summary"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="collapsible-section pb-3">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ Menopause:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search Menopause"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="collapsible-section">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ Family History:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search Family History"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="collapsible-section">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ Drug history:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search Drug history"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="collapsible-section">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ Examination:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search Examination"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="collapsible-section">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ Patient Note:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search Patient Note"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="collapsible-section">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ Local Examination:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search Local Examination"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="collapsible-section">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ NEPHROLOGICAL EXAMINATION:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search NEPHROLOGICAL EXAMINATION"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="collapsible-section">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ Radiology:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search Radiology"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+                <div class="collapsible-section">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ Provisional Diagnose:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search Provisional Diagnose"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="collapsible-section">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ Doctor Note:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search doctor note"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="collapsible-section">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ General Advice:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search General Advice"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="collapsible-section">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ Note:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search Note"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="collapsible-section">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ LMP:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search LMP"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="collapsible-section pb-3">
+                    <div class="collapsible-header heading-color small-text" onclick="toggleCollapse()">▶ History:</div>
+                    <div id="collapsibleContent" class="collapsible-content">
+
+                        <div class="input-group-custom">
+                            <!-- Input 1 -->
+                            <div class="combobox-wrapper">
+                                <input list="options1" class="" placeholder="Search History"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options1">
+                                    <option value="Option A1">
+                                    <option value="Option B1">
+                                    <option value="Option C1">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 2 -->
+                            <div class="combobox-wrapper">
+                                <input list="options2" class="" placeholder="Duration"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options2">
+                                    <option value="Option A2">
+                                    <option value="Option B2">
+                                    <option value="Option C2">
+                                </datalist>
+                            </div>
+
+                            <!-- Input 3 -->
+                            <div class="combobox-wrapper">
+                                <input list="options3" class="" placeholder="Detail"
+                                    oninput="toggleClearBtn(this)">
+                                <span class="clear-btn" onclick="clearInput(this)">×</span>
+                                <datalist id="options3">
+                                    <option value="Option A3">
+                                    <option value="Option B3">
+                                    <option value="Option C3">
+                                </datalist>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="position-fixed fixed-button d-flex flex-column justify-content-center align-items-center">
+            <button type="button" class="common-btn heading-bg-color"><img width="20px" src="./assets/save.png" alt="save button" /></button>
+            <button type="button" onclick="print()" class="common-btn heading-bg-color mt-2"><img width="20px" src="./assets/printing.png" alt="save button" /></button>
+        </div>
+    </div>
+    <script>
+        // Toggle only the current collapsible section
+        function toggleCollapse(header) {
+            const content = header.nextElementSibling;
+            content.classList.toggle('show');
+        }
+
+        // Clear the specific input
+        function clearInput(span) {
+            const input = span.previousElementSibling;
+            input.value = '';
+            input.focus();
+            span.style.visibility = 'hidden';
+        }
+
+        // Toggle visibility of the clear button
+        function toggleClearBtn(input) {
+            const clearBtn = input.nextElementSibling;
+            clearBtn.style.visibility = input.value ? 'visible' : 'hidden';
+        }
+
+        // Hide all clear buttons initially
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.clear-btn').forEach(btn => {
+                btn.style.visibility = 'hidden';
+            });
+
+            // Attach click event to all collapsible headers
+            document.querySelectorAll('.collapsible-header').forEach(header => {
+                header.addEventListener('click', () => toggleCollapse(header));
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

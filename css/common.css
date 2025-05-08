@@ -1,0 +1,543 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto, sans-serif;
+}
+h1,h2,h3,h4,h5,h6,p {
+  padding: 0;
+  margin: 0;
+}
+.date-picker, .search-input, .select-input {
+  padding: 5px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  min-width: 170px;
+}
+input, textarea {
+  padding: 5px 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  width: 100%;
+}
+input:focus {
+  border: 2px solid var(--primary-bg-color);
+  outline: none;
+}
+
+.input-wrapper {
+    position: relative;
+    margin: 10px 0;
+    max-width: 400px;
+  }
+
+  .input-wrapper input,
+  .input-wrapper select {
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    outline: none;
+  }
+  input:not[type="radio"] {
+    border: 1px solid #888 !important;
+    border-radius: 6px !important;
+    outline: none !important;
+    padding: 5px 12px !important;
+    font-size: 14px !important;
+  }
+  input[type="radio"] {
+    width: auto;
+  }
+  .input-wrapper label {
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    background: white;
+    padding: 0 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #555;
+  }
+
+
+  .select-wrapper {
+    position: relative;
+    margin: 10px 0;
+    max-width: 400px;
+  }
+
+  .select-wrapper select {
+    width: 100%;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    outline: none;
+    background-color: white;
+    appearance: none; /* removes native dropdown arrow */
+  }
+
+  .select-wrapper label {
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    background: white;
+    padding: 0 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #555;
+    pointer-events: none;
+  }
+
+  .header-row {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .no-data-row td {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+    padding: 20px 0;
+  }
+  
+  /* Optional: Add a custom arrow */
+  .select-wrapper::after {
+    content: "▼";
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #555;
+    font-size: 12px;
+  }
+  .btn {
+    font-size: 12px;
+    padding: 5px 12px;
+  }
+
+.nav-tabs .nav-link {
+  border-color: transparent;
+  font-size: 12px;
+  padding: 5px 12px;
+  color: var(--primary-bg-color) !important;
+}
+.nav-tabs .nav-link.active {
+  color: var(--primary-bg-color) !important;
+  border-bottom: 2px solid var(--primary-bg-color)  !important;
+  background-color: unset !important;
+}
+
+/* new patient checkbox */
+.form-check-label {
+  font-size: 12px;
+  font-weight: 600;
+}
+.form-check-input {
+  padding: 7px !important;
+}
+.form-check.form-check-inline {
+  display: inline-flex !important;
+  align-items: center;
+  margin-bottom: 0 !important;
+}
+
+.btn {
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+
+/* bootstrap accordian custom css */
+.accordion-button {
+  padding: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.accordion-button:focus {
+  box-shadow: unset;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #fff;
+  box-shadow: none;
+  background-color: #47b2e4;
+}
+.accordion-button:not(.collapsed)::after {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 3px !important;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+th {
+  padding: 5px !important;
+  background-color: #f8fafc !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  color: #1e293b !important;
+}
+
+td {
+  font-size: 11px;
+  color: #475569dc !important;
+  font-weight: 500;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* theme colors */
+:root {
+  --primary-bg-color: #47b2e4;
+  --heading-bg-color: #37517e;
+  --white-color: #ffffff;
+  --black-color: #000000;
+  --gray-bg-color: #444444;
+}
+
+/* color classes */
+.primary-bg-color {
+  background-color: var(--primary-bg-color);
+}
+.heading-bg-color {
+  background-color: var(--heading-bg-color);
+}
+.white-bg-color {
+ background-color: var(--white-color);
+}
+.black-bg-color {
+  background-color: var(--black-color);
+}
+.gray-bg-color {
+  background-color: var(--gray-bg-color);
+}
+.light-gray-bg-color {
+  background-color: #e8e8e8;
+}
+
+.primary-color {
+  color: var(--primary-bg-color);
+}
+.heading-color {
+  color: var(--heading-bg-color) !important;
+}
+.white-color {
+ color: var(--white-color);
+}
+.black-color {
+  color: var(--black-color);
+}
+.gray-color {
+  color: var(--gray-bg-color);
+}
+
+/* Heading */
+.heading {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: .5rem;
+}
+
+/* Sub Heading */
+.sub-heading {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+/* common button */
+.common-btn {
+  color: white;
+  padding: 7px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+}
+/* common button hover effect */
+.common-btn.primary-bg-color:hover {
+  color: white;
+  background-color: #47b2e4e0;
+  transition: all 0.3s ease-in-out;
+}
+.common-btn.gray-bg-color:hover {
+  color: white;
+  background-color: #444444af;
+  transition: all 0.3s ease-in-out;
+}
+
+
+/* white bg common button */
+.white-button {
+  padding: 3px 10px;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  background-color: #fff;
+  color: var(--heading-bg-color);
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.white-button:hover {
+  background-color: #f1f3f4;
+}
+/* border right seprater */
+.border-right-seprster {
+  border-right: 1.5px solid var(--black-color);
+}
+
+/* Patient avatar */
+.patient-avatar {
+  width: 50px;
+  height: 50px;
+  background: #47b2e4;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: #fff;
+  font-weight: bold;
+  margin-right: 18px;
+  position: relative;
+}
+/* .patient-avatar::after {
+  content: "";
+  border: 2px solid #47b2e4;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+} */
+@media (max-width: 540px) {
+  .patient-avatar {
+      width: 34px;
+      height: 34px;
+      font-size: 18px;
+  }
+}
+.patient-info {
+  flex-grow: 1;
+}
+
+.patient-name {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.patient-contact {
+  color: #666;
+  margin-bottom: 0.25rem;
+}
+.small-text {
+  font-size: 12px;
+}
+
+
+/* Modal */
+.modal .common-btn {
+  padding: 3px 12px;
+}
+.nursing-modal {
+  margin: auto;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+.modal-heading {
+  font-size: 15px;
+  font-weight: 600;
+  color: #000;
+}
+.nursing-modal-dialog {
+  max-width: 800px;
+}
+.modal-header {
+  font-size: 16px;
+  padding: 5px;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.form-row input,
+.form-row select {
+  padding: 6px;
+  font-size: 14px;
+  flex: 1;
+}
+
+.editor-toolbar {
+  border: 1px solid #ccc;
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.editor-toolbar button {
+  padding: 4px 6px;
+  cursor: pointer;
+  font-size: 13.33px;
+  font-weight: 400;
+  border: 1px solid #000;
+  border-radius: 4px;
+}
+.editor-toolbar button.active {
+  background-color: var(--primary-bg-color);
+  color: #fff;
+  border-color: var(--primary-bg-color);
+}
+
+.editor {
+  border: 1px solid #ccc;
+  min-height: 200px;
+  padding: 10px;
+  border-top: none;
+  margin-bottom: 15px;
+  outline: none;
+}
+
+
+
+
+
+
+/* switch */
+.form-switch .form-check-input {
+  width: 30px;
+  height: 16px;
+}
+.form-switch .form-check-input:focus {
+  border: none;
+}
+
+/* customized scrollbar css */
+/* Scrollbar Track */
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Scrollbar Thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #47b2e4;
+  border-radius: 2px;
+}
+
+/* Scrollbar Track background */
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+/* Firefox-specific styles */
+* {
+  scrollbar-width: thin; /* Closest to 2px */
+  scrollbar-color: #47b2e4 #f0f0f0; /* thumb color and track color */
+}
+
+
+/* checkbox 19 */
+.checkbox-wrapper-18 .round {
+  position: relative;
+}
+
+.checkbox-wrapper-18 .round label {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  display: block;
+}
+
+.checkbox-wrapper-18 .round label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "";
+  height: 4.8px;
+  left: 6px;
+  opacity: 0;
+  position: absolute;
+  top: 6px;
+  transform: rotate(-45deg);
+  width: 10px;
+}
+
+.checkbox-wrapper-18 .round input[type="checkbox"] {
+  visibility: hidden;
+  display: none;
+  opacity: 0;
+}
+
+.checkbox-wrapper-18 .round input[type="checkbox"]:checked + label {
+  background-color: #66bb6a;
+  border-color: #66bb6a;
+}
+
+.checkbox-wrapper-18 .round input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+}
+

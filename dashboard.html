@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/common.css" />
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/common.css" />
+
+    <title>Patient Billing System</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 py-1">
+                <div class="filters">
+                    <div class="filter-group">
+                        <div class="d-flex flex-column input-wrapper">
+                            <label>From</label>
+                            <input type="date" class="date-picker" placeholder="From Date">
+                        </div>
+                        <div class="d-flex flex-column input-wrapper">
+                            <label>To</label>
+                            <input type="date" class="date-picker" placeholder="To Date">
+                        </div>
+                    </div>
+
+                    <input type="text" class="search-input w-auto" placeholder="Patient or UHID...">
+
+                    <div class="select-wrapper">
+                        <label>Select Doctor</label>
+                        <select class="select-input">
+                            <option hidden></option>
+                            <option value="dr1">Dr. Smith</option>
+                            <option value="dr2">Dr. Johnson</option>
+                            <option value="dr3">Dr. Williams</option>
+                        </select>
+                    </div>
+                    <div class="select-wrapper">
+                        <label>Payment Type</label>
+                        <select class="select-input">
+                            <option hidden></option>
+                            <option value="cash">Cash</option>
+                            <option value="card">Card</option>
+                            <option value="insurance">Insurance</option>
+                        </select>
+                    </div>
+
+                    <div class="radio-group">
+                        <label class="radio-item">
+                            <input type="radio" name="status" value="all" checked>
+                            <span>All</span>
+                        </label>
+                        <label class="radio-item">
+                            <input type="radio" name="status" value="paid">
+                            <span>Paid</span>
+                        </label>
+                        <label class="radio-item">
+                            <input type="radio" name="status" value="due">
+                            <span>Due</span>
+                        </label>
+                    </div>
+                    <div class="actions">
+                        <button class="actions-btn" onclick="toggleDropdown(this)">⋮</button>
+                        <div class="dropdown">
+                            <a href="./newpatientregister.html">Admit</a>
+                            <a href="./existpatietregisteration.html">Pre-Book</a>
+                            <a href="./bedavailability.html">Bed Availability</a>
+                            <a href="#">Bill Summary</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr class="header-row">
+                                <th>No.</th>
+                                <th>MLC</th>
+                                <th>UHID</th>
+                                <th>IPD NO</th>
+                                <th>Patient</th>
+                                <th>Mobile No</th>
+                                <th>Age/Gender</th>
+                                <th>Billing</th>
+                                <th>Payer Name</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="patientTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 py-1">
+                <div class="pagination d-flex justify-content-between flex-row flex-md-row align-items-center">
+                    <div>Items per page: 25</div>
+                    <div>1 - 25 of 398</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script>
+        // Handle dropdown menu
+        function toggleDropdown(button) {
+            // Close all other dropdowns
+            const dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns.forEach(dropdown => {
+                if (dropdown !== button.nextElementSibling) {
+                    dropdown.classList.remove('show');
+                }
+            });
+
+            // Toggle current dropdown
+            const dropdown = button.nextElementSibling;
+            dropdown.classList.toggle('show');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!event.target.matches('.actions-btn')) {
+                const dropdowns = document.querySelectorAll('.dropdown');
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('show');
+                });
+            }
+        });
+
+        // Handle filters
+        const filters = {
+            fromDate: '',
+            toDate: '',
+            search: '',
+            doctor: '',
+            paymentType: '',
+            status: 'all'
+        };
+
+        // Add event listeners for filters
+        document.querySelectorAll('.date-picker').forEach((picker, index) => {
+            picker.addEventListener('change', (e) => {
+                filters[index === 0 ? 'fromDate' : 'toDate'] = e.target.value;
+                applyFilters();
+            });
+        });
+
+        document.querySelector('.search-input').addEventListener('input', (e) => {
+            filters.search = e.target.value;
+            applyFilters();
+        });
+
+        document.querySelectorAll('.select-input').forEach((select, index) => {
+            select.addEventListener('change', (e) => {
+                filters[index === 0 ? 'doctor' : 'paymentType'] = e.target.value;
+                applyFilters();
+            });
+        });
+
+        document.querySelectorAll('input[name="status"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                filters.status = e.target.value;
+                applyFilters();
+            });
+        });
+
+        function applyFilters() {
+            console.log('Applied filters:', filters);
+            // Here you would typically make an API call or filter the data
+            // For now, we'll just log the filters
+        }
+    </script>
+
+    <script>
+        const patientRows = [
+            {
+                id: 1,
+                code: "HC01945",
+                ipd: "IPD-839",
+                name: "MR. MANISH ASHOK KUMAR",
+                phone: "+91 9770149478",
+                ageGender: "25 YEARS/ M",
+                status: "DUE",
+                company: "HEALTHTRAY TEC...",
+                admission: "ADMITTED"
+            },
+            {
+                id: 2,
+                code: "HC01946",
+                ipd: "IPD-840",
+                name: "MS. ANITA VERMA",
+                phone: "+91 9812345678",
+                ageGender: "30 YEARS/ F",
+                status: "DUE",
+                company: "HEALTHTRAY TEC...",
+                admission: "ADMITTED"
+            },
+            {
+                id: 3,
+                code: "HC01947",
+                ipd: "IPD-841",
+                name: "MR. RAVI SINGH",
+                phone: "+91 9823456789",
+                ageGender: "45 YEARS/ M",
+                status: "PAID",
+                company: "HEALTHTRAY TEC...",
+                admission: "DISCHARGED"
+            },
+            {
+                id: 4,
+                code: "HC01948",
+                ipd: "IPD-842",
+                name: "MRS. SUNITA DEVI",
+                phone: "+91 9765432101",
+                ageGender: "60 YEARS/ F",
+                status: "DUE",
+                company: "HEALTHTRAY TEC...",
+                admission: "ADMITTED"
+            },
+            {
+                id: 5,
+                code: "HC01949",
+                ipd: "IPD-843",
+                name: "MR. ARUN KUMAR",
+                phone: "+91 9753124680",
+                ageGender: "38 YEARS/ M",
+                status: "PAID",
+                company: "HEALTHTRAY TEC...",
+                admission: "ADMITTED"
+            },
+            {
+                id: 6,
+                code: "HC01950",
+                ipd: "IPD-844",
+                name: "MS. PRIYA SHARMA",
+                phone: "+91 9834567890",
+                ageGender: "27 YEARS/ F",
+                status: "DUE",
+                company: "HEALTHTRAY TEC...",
+                admission: "ADMITTED"
+            },
+            {
+                id: 7,
+                code: "HC01951",
+                ipd: "IPD-845",
+                name: "MR. SANJAY GUPTA",
+                phone: "+91 9845678901",
+                ageGender: "50 YEARS/ M",
+                status: "PAID",
+                company: "HEALTHTRAY TEC...",
+                admission: "DISCHARGED"
+            },
+            {
+                id: 8,
+                code: "HC01952",
+                ipd: "IPD-846",
+                name: "MRS. KAVITA JAIN",
+                phone: "+91 9900123456",
+                ageGender: "41 YEARS/ F",
+                status: "DUE",
+                company: "HEALTHTRAY TEC...",
+                admission: "ADMITTED"
+            },
+            {
+                id: 9,
+                code: "HC01953",
+                ipd: "IPD-847",
+                name: "MR. VIKRAM RAO",
+                phone: "+91 9911223344",
+                ageGender: "33 YEARS/ M",
+                status: "PAID",
+                company: "HEALTHTRAY TEC...",
+                admission: "DISCHARGED"
+            },
+            {
+                id: 10,
+                code: "HC01954",
+                ipd: "IPD-848",
+                name: "MS. NIDHI PATEL",
+                phone: "+91 9933445566",
+                ageGender: "29 YEARS/ F",
+                status: "DUE",
+                company: "HEALTHTRAY TEC...",
+                admission: "ADMITTED"
+            },
+            {
+                id: 11,
+                code: "HC01945",
+                ipd: "IPD-839",
+                name: "MR. MANISH ASHOK KUMAR",
+                phone: "+91 9770149478",
+                ageGender: "25 YEARS/ M",
+                status: "DUE",
+                company: "HEALTHTRAY TEC...",
+                admission: "ADMITTED"
+            },
+            {
+                id: 12,
+                code: "HC01946",
+                ipd: "IPD-840",
+                name: "MS. ANITA VERMA",
+                phone: "+91 9812345678",
+                ageGender: "30 YEARS/ F",
+                status: "DUE",
+                company: "HEALTHTRAY TEC...",
+                admission: "ADMITTED"
+            },
+            {
+                id: 13,
+                code: "HC01947",
+                ipd: "IPD-841",
+                name: "MR. RAVI SINGH",
+                phone: "+91 9823456789",
+                ageGender: "45 YEARS/ M",
+                status: "PAID",
+                company: "HEALTHTRAY TEC...",
+                admission: "DISCHARGED"
+            },
+            {
+                id: 14,
+                code: "HC01948",
+                ipd: "IPD-842",
+                name: "MRS. SUNITA DEVI",
+                phone: "+91 9765432101",
+                ageGender: "60 YEARS/ F",
+                status: "DUE",
+                company: "HEALTHTRAY TEC...",
+                admission: "ADMITTED"
+            },
+            {
+                id: 15,
+                code: "HC01949",
+                ipd: "IPD-843",
+                name: "MR. ARUN KUMAR",
+                phone: "+91 9753124680",
+                ageGender: "38 YEARS/ M",
+                status: "PAID",
+                company: "HEALTHTRAY TEC...",
+                admission: "ADMITTED"
+            },
+            {
+                id: 16,
+                code: "HC01950",
+                ipd: "IPD-844",
+                name: "MS. PRIYA SHARMA",
+                phone: "+91 9834567890",
+                ageGender: "27 YEARS/ F",
+                status: "DUE",
+                company: "HEALTHTRAY TEC...",
+                admission: "ADMITTED"
+            },
+            {
+                id: 17,
+                code: "HC01951",
+                ipd: "IPD-845",
+                name: "MR. SANJAY GUPTA",
+                phone: "+91 9845678901",
+                ageGender: "50 YEARS/ M",
+                status: "PAID",
+                company: "HEALTHTRAY TEC...",
+                admission: "DISCHARGED"
+            },
+            {
+                id: 18,
+                code: "HC01952",
+                ipd: "IPD-846",
+                name: "MRS. KAVITA JAIN",
+                phone: "+91 9900123456",
+                ageGender: "41 YEARS/ F",
+                status: "DUE",
+                company: "HEALTHTRAY TEC...",
+                admission: "ADMITTED"
+            },
+            {
+                id: 19,
+                code: "HC01953",
+                ipd: "IPD-847",
+                name: "MR. VIKRAM RAO",
+                phone: "+91 9911223344",
+                ageGender: "33 YEARS/ M",
+                status: "PAID",
+                company: "HEALTHTRAY TEC...",
+                admission: "DISCHARGED"
+            },
+            {
+                id: 20,
+                code: "HC01954",
+                ipd: "IPD-848",
+                name: "MS. NIDHI PATEL",
+                phone: "+91 9933445566",
+                ageGender: "29 YEARS/ F",
+                status: "DUE",
+                company: "HEALTHTRAY TEC...",
+                admission: "ADMITTED"
+            },
+        ];
+
+
+        const tbody = document.getElementById("patientTableBody");
+
+        patientRows.forEach((patient) => {
+            const tr = document.createElement("tr");
+
+            tr.innerHTML = `
+        <td>${patient.id}</td>
+        <td>...</td>
+        <td>${patient.code}</td>
+        <td>${patient.ipd}</td>
+        <td>${patient.name}</td>
+        <td>
+          <div class="phone-number">
+            📞 ${patient.phone}
+          </div>
+        </td>
+        <td>${patient.ageGender}</td>
+        <td><span class="status status-${patient.status.toLowerCase()}">${patient.status}</span></td>
+        <td>${patient.company}</td>
+        <td>${patient.admission}</td>
+      `;
+
+            tbody.appendChild(tr);
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
