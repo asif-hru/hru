@@ -16,8 +16,15 @@
     <style>
         body {
             background-color: #f8f9fa;
-            padding: 5px 20px;
-            color: #333;
+            padding: 5px 0;
+        }
+        @media (max-width: 600px) {
+            .input-wrapper input {
+                min-width: unset;
+            }
+        }
+        .select-wrapper {
+            max-width: 100%;
         }
 
         .patient-header {
@@ -162,30 +169,10 @@
     </style>
 </head>
 <body>
-    <div class="container position-relative">
-        <!-- Patient Header -->
-        <!-- <div class="patient-header justify-content-between position-absolute w-100" style="top: 0;left: 0;right: 0;z-index: 100;">
-            <div class="d-flex align-items-start justify-content-between col-11 col-md-10 col-lg-8 col-xl-6">
-                <div class="d-flex align-items-center">
-                    <div class="avatar">S</div>
-                    <div class="patient-info ms-3">
-                        <h1 class="patient-name">MS. SONIYA SHARMA, (25 Y/ F)</h1>
-                        <div class="patient-contact">+91 7016482092</div>
-                        <div class="patient-contact">REF: ---</div>
-                    </div>
-                </div>
-                <p><b>DOB:</b> 12/12/2025</p>
-            </div>
-            <div>
-                <figure>
-                    <img class="edit-profile-icon" src="./assets/edit.png" alt="edit icon" />
-                </figure>
-            </div>
-        </div> -->
-
+    <div class="container-fluid position-relative">
         <!-- Form Container -->
         <div class="form-container">
-            <h2 class="sub-heading">IPD Detail</h2>
+            <h2 class="sub-heading heading-color">IPD Detail</h2>
             <form id="ipdForm">
                 <div class="form-grid align-items-center">
                     <!-- IPD Number -->

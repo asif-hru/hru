@@ -23,6 +23,29 @@
             border-radius: 8px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
+        .Pharmacy-order-list input,
+        .Pharmacy-order-list select,
+        .Pharmacy-order-list textarea {
+            height: 40px;
+            border: 1.5px solid #575757;
+            border-radius: 0;
+            padding-left: 0;
+        }
+        .Pharmacy-order-list textarea {
+            padding: 6px 12px 6px 0;
+            margin-bottom: -6px;
+        }
+        .Pharmacy-order-list.type input,
+        .Pharmacy-order-list.quantity input {
+            width: 70px;
+        }
+        .Pharmacy-order-list.notes textarea {
+            width: 250px;
+        }
+        .Pharmacy-order-list.input-wrapper label,
+        .Pharmacy-order-list.select-wrapper label {
+            left: 2px;
+        }
     </style>
 
     <title>Create Order</title>
@@ -436,8 +459,364 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-7">
+                                <div class="d-flex align-items-center">
+                                    <div class="select-wrapper ms-1">
+                                        <label>Select Pharmacy *</label>
+                                        <select class="select-input">
+                                            <option hidden></option>
+                                            <option value="dr1">Dr. Smith</option>
+                                            <option value="dr2">Dr. Johnson</option>
+                                            <option value="dr3">Dr. Williams</option>
+                                        </select>
+                                    </div>
+                                    <div class="select-wrapper ms-1">
+                                        <label>Select Doctor *</label>
+                                        <select class="select-input">
+                                            <option hidden></option>
+                                            <option value="dr1">Dr. Smith</option>
+                                            <option value="dr2">Dr. Johnson</option>
+                                            <option value="dr3">Dr. Williams</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div class="d-flex align-items-center flex-wrap justify-content-end">
+                                    <button class="white-button white-button-sizing gray-bg-color text-black ms-1">Save As Template</button>
+                                    <button class="white-button white-button-sizing gray-bg-color text-black ms-1">Save & Print</button>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="d-flex align-items-center">
+                                    <span class="fs-5">1</span>
+                                    <div class="input-wrapper Pharmacy-order-list type ms-1">
+                                        <label>Type</label>
+                                        <input type="text" />
+                                    </div>
+                                     <div class="select-wrapper Pharmacy-order-list name ms-1">
+                                        <label>Name</label>
+                                        <select class="select-input">
+                                            <option hidden></option>
+                                            <option value="dr1">Dr. Smith</option>
+                                            <option value="dr2">Dr. Johnson</option>
+                                            <option value="dr3">Dr. Williams</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-wrapper Pharmacy-order-list quantity ms-1">
+                                        <label>Quantity</label>
+                                        <input type="text" />
+                                    </div>
+                                    <div class="input-wrapper Pharmacy-order-list notes ms-1">
+                                        <label>Notes</label>
+                                        <textarea></textarea>
+                                    </div>
+                                    <button class="white-button heading-color py-2 px-3 ms-2">Remove</button>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-2">
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <p>Order List</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="d-flex align-items-center justify-content-end">
+                                            <button class="white-button white-button-sizing gray-bg-color text-black py-1"><img src="./assets/refresh.png" alt="refresh" width="20" /></button>
+                                            <div class="select-wrapper ms-1">
+                                                <label>Search By Status</label>
+                                                <select class="select-input">
+                                                    <option hidden></option>
+                                                    <option value="dr1">Dr. Smith</option>
+                                                    <option value="dr2">Dr. Johnson</option>
+                                                    <option value="dr3">Dr. Williams</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-container mt-2">
+                                    <table>
+                                        <thead>
+                                            <tr class="header-row">
+                                                <th>No.</th>
+                                                <th>Order No.</th>
+                                                <th>Doctor Name</th>
+                                                <th>Ordered By</th>
+                                                <th>Order Date/Time</th>
+                                                <th>Status</th>
+                                                <th>Cancelled BY</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>MED007</td>
+                                                <td>Dr. Smith</td>
+                                                <td>Asif</td>
+                                                <td>10/04/2025 04:51 PM</td>
+                                                <td>Pending</td>
+                                                <td>Asif</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>MED007</td>
+                                                <td>Dr. Smith</td>
+                                                <td>Asif</td>
+                                                <td>10/04/2025 04:51 PM</td>
+                                                <td>Pending</td>
+                                                <td>Asif</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>MED007</td>
+                                                <td>Dr. Smith</td>
+                                                <td>Asif</td>
+                                                <td>10/04/2025 04:51 PM</td>
+                                                <td>Pending</td>
+                                                <td>Asif</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>MED007</td>
+                                                <td>Dr. Smith</td>
+                                                <td>Asif</td>
+                                                <td>10/04/2025 04:51 PM</td>
+                                                <td>Pending</td>
+                                                <td>Asif</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>MED007</td>
+                                                <td>Dr. Smith</td>
+                                                <td>Asif</td>
+                                                <td>10/04/2025 04:51 PM</td>
+                                                <td>Pending</td>
+                                                <td>Asif</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>6</td>
+                                                <td>MED007</td>
+                                                <td>Dr. Smith</td>
+                                                <td>Asif</td>
+                                                <td>10/04/2025 04:51 PM</td>
+                                                <td>Pending</td>
+                                                <td>Asif</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>7</td>
+                                                <td>MED007</td>
+                                                <td>Dr. Smith</td>
+                                                <td>Asif</td>
+                                                <td>10/04/2025 04:51 PM</td>
+                                                <td>Pending</td>
+                                                <td>Asif</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>8</td>
+                                                <td>MED007</td>
+                                                <td>Dr. Smith</td>
+                                                <td>Asif</td>
+                                                <td>10/04/2025 04:51 PM</td>
+                                                <td>Pending</td>
+                                                <td>Asif</td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-7">
+                                <div class="d-flex align-items-center">
+                                    <div class="select-wrapper ms-1">
+                                        <label>Select Pharmacy *</label>
+                                        <select class="select-input">
+                                            <option hidden></option>
+                                            <option value="dr1">Dr. Smith</option>
+                                            <option value="dr2">Dr. Johnson</option>
+                                            <option value="dr3">Dr. Williams</option>
+                                        </select>
+                                    </div>
+                                    <div class="select-wrapper ms-1">
+                                        <label>Select Doctor *</label>
+                                        <select class="select-input">
+                                            <option hidden></option>
+                                            <option value="dr1">Dr. Smith</option>
+                                            <option value="dr2">Dr. Johnson</option>
+                                            <option value="dr3">Dr. Williams</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div class="d-flex align-items-center flex-wrap justify-content-end">
+                                    <button class="white-button white-button-sizing gray-bg-color text-black ms-1">Save As Template</button>
+                                    <button class="white-button white-button-sizing gray-bg-color text-black ms-1">Save & Print</button>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="d-flex align-items-center">
+                                    <span class="fs-5">1</span>
+                                    <div class="input-wrapper Pharmacy-order-list type ms-1">
+                                        <label>Type</label>
+                                        <input type="text" />
+                                    </div>
+                                     <div class="select-wrapper Pharmacy-order-list name ms-1">
+                                        <label>Name</label>
+                                        <select class="select-input">
+                                            <option hidden></option>
+                                            <option value="dr1">Dr. Smith</option>
+                                            <option value="dr2">Dr. Johnson</option>
+                                            <option value="dr3">Dr. Williams</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-wrapper Pharmacy-order-list quantity ms-1">
+                                        <label>Quantity</label>
+                                        <input type="text" />
+                                    </div>
+                                    <div class="input-wrapper Pharmacy-order-list notes ms-1">
+                                        <label>Notes</label>
+                                        <textarea></textarea>
+                                    </div>
+                                    <button class="white-button heading-color py-2 px-3 ms-2">Remove</button>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-2">
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <p>Order List</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="d-flex align-items-center justify-content-end">
+                                            <button class="white-button white-button-sizing gray-bg-color text-black py-1"><img src="./assets/refresh.png" alt="refresh" width="20" /></button>
+                                            <div class="select-wrapper ms-1">
+                                                <label>Search By Status</label>
+                                                <select class="select-input">
+                                                    <option hidden></option>
+                                                    <option value="dr1">Dr. Smith</option>
+                                                    <option value="dr2">Dr. Johnson</option>
+                                                    <option value="dr3">Dr. Williams</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-container mt-2">
+                                    <table>
+                                        <thead>
+                                            <tr class="header-row">
+                                                <th>No.</th>
+                                                <th>Order No.</th>
+                                                <th>Doctor Name</th>
+                                                <th>Ordered By</th>
+                                                <th>Order Date/Time</th>
+                                                <th>Status</th>
+                                                <th>Cancelled BY</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>MED007</td>
+                                                <td>Dr. Smith</td>
+                                                <td>Asif</td>
+                                                <td>10/04/2025 04:51 PM</td>
+                                                <td>Pending</td>
+                                                <td>Asif</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>MED007</td>
+                                                <td>Dr. Smith</td>
+                                                <td>Asif</td>
+                                                <td>10/04/2025 04:51 PM</td>
+                                                <td>Pending</td>
+                                                <td>Asif</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>MED007</td>
+                                                <td>Dr. Smith</td>
+                                                <td>Asif</td>
+                                                <td>10/04/2025 04:51 PM</td>
+                                                <td>Pending</td>
+                                                <td>Asif</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>MED007</td>
+                                                <td>Dr. Smith</td>
+                                                <td>Asif</td>
+                                                <td>10/04/2025 04:51 PM</td>
+                                                <td>Pending</td>
+                                                <td>Asif</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>MED007</td>
+                                                <td>Dr. Smith</td>
+                                                <td>Asif</td>
+                                                <td>10/04/2025 04:51 PM</td>
+                                                <td>Pending</td>
+                                                <td>Asif</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>6</td>
+                                                <td>MED007</td>
+                                                <td>Dr. Smith</td>
+                                                <td>Asif</td>
+                                                <td>10/04/2025 04:51 PM</td>
+                                                <td>Pending</td>
+                                                <td>Asif</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>7</td>
+                                                <td>MED007</td>
+                                                <td>Dr. Smith</td>
+                                                <td>Asif</td>
+                                                <td>10/04/2025 04:51 PM</td>
+                                                <td>Pending</td>
+                                                <td>Asif</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>8</td>
+                                                <td>MED007</td>
+                                                <td>Dr. Smith</td>
+                                                <td>Asif</td>
+                                                <td>10/04/2025 04:51 PM</td>
+                                                <td>Pending</td>
+                                                <td>Asif</td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                   </div>
             </div>
         </div>

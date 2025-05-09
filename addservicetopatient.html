@@ -23,8 +23,15 @@
 
         body {
             background-color: #f8f9fa;
-            padding: 5px 20px;
-            color: #333;
+            padding: 5px 0;
+        }
+        @media (max-width: 600px) {
+            .input-wrapper input {
+                min-width: unset;
+            }
+        }
+        .select-wrapper {
+            max-width: 100%;
         }
 
         .container {
@@ -49,12 +56,6 @@
             padding: 1.5rem;
             border-radius: 8px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .form-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
         }
 
         .form-grid {
@@ -152,7 +153,7 @@
     </style>
 </head>
 <body>
-    <div class="container position-relative">
+    <div class="container-fluid position-relative">
         <!-- Patient Header -->
         <div class="patient-header justify-content-between position-absolute" style="top: 0;left: 10px;right: 10px;z-index: 100;">
             <div class="d-flex align-items-start justify-content-between col-11 col-md-10 col-lg-8 col-xl-6">
@@ -175,7 +176,7 @@
 
         <!-- Form Container -->
         <div class="form-container">
-            <h2 class="form-title">IPD Detail</h2>
+            <h2 class="sub-heading heading-color">IPD Detail</h2>
             
             <form id="ipdForm">
                 <div class="form-grid align-items-center">
@@ -310,31 +311,31 @@
                 <div class="tab-content p-1 border border-0">
                     <div class="tab-pane fade show active" id="selct-bed">
                         <div class="row align-items-center">
-                            <div class="col-2">
+                            <div class="col-12 col-md-4 col-lg-2">
                                 <div class="form-group input-wrapper">
                                     <label>Floor</label>
                                     <input type="text" />
                                 </div>
                             </div>
-                            <div class="col-2">
+                            <div class="col-12 col-md-4 col-lg-2">
                                 <div class="form-group input-wrapper">
                                     <label>Ward</label>
                                     <input type="text" />
                                 </div>
                             </div>
-                            <div class="col-2">
+                            <div class="col-12 col-md-4 col-lg-2">
                                 <div class="form-group input-wrapper">
                                     <label>Ward Category</label>
                                     <input type="text" />
                                 </div>
                             </div>
-                            <div class="col-2">
+                            <div class="col-12 col-md-4 col-lg-2">
                                 <div class="form-group input-wrapper">
                                     <label>Bed No.</label>
                                     <input type="text" />
                                 </div>
                             </div>
-                            <div class="col-2">
+                            <div class="col-12 col-md-4 col-lg-2">
                                 <div class="form-group input-wrapper">
                                     <label for="patient-type">Patient Type</label>
                                     <select id="patient-type">
@@ -344,7 +345,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-2">
+                            <div class="col-12 col-md-4 col-lg-2">
                                 <a class="text-white text-decoration-none common-btn primary-bg-color" href="./addservice.html" >Update Service</a>
                             </div>
                         </div>

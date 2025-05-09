@@ -1,0 +1,57 @@
+<div class="filters">
+    <div class="filter-group">
+        <div class="d-flex flex-column input-wrapper">
+            <label>From</label>
+            <input type="date" class="date-picker" placeholder="From Date">
+        </div>
+        <div class="d-flex flex-column input-wrapper">
+            <label>To</label>
+            <input type="date" class="date-picker" placeholder="To Date">
+        </div>
+    </div>
+
+    <input type="text" class="search-input w-auto" placeholder="Patient or UHID...">
+
+    <div class="select-wrapper">
+        <label>Select Doctor</label>
+        <select class="select-input">
+            <option hidden></option>
+            <option value="dr1">Dr. Smith</option>
+            <option value="dr2">Dr. Johnson</option>
+            <option value="dr3">Dr. Williams</option>
+        </select>
+    </div>
+    <div class="select-wrapper">
+        <label>Payment Type</label>
+        <select class="select-input">
+            <option hidden></option>
+            <option value="cash">Cash</option>
+            <option value="card">Card</option>
+            <option value="insurance">Insurance</option>
+        </select>
+    </div>
+
+    <div class="radio-group">
+        <label class="radio-item">
+            <input type="radio" name="status" value="all" checked>
+            <span>All</span>
+        </label>
+        <label class="radio-item">
+            <input type="radio" name="status" value="paid">
+            <span>Paid</span>
+        </label>
+        <label class="radio-item">
+            <input type="radio" name="status" value="due">
+            <span>Due</span>
+        </label>
+    </div>
+    <div class="actions">
+        <button class="actions-btn" onclick="toggleDropdown(this)">⋮</button>
+        <div class="dropdown">
+            <a href="./newpatientregister.html">Admit</a>
+            <a href="./existpatietregisteration.html">Pre-Book</a>
+            <a href="./bedavailability.html">Bed Availability</a>
+            <a href="#">Bill Summary</a>
+        </div>
+    </div>
+</div>

@@ -19,6 +19,14 @@
     <link rel="stylesheet" href="./css/common.css" />
 
     <title>Patient Billing System</title>
+
+
+    <style>
+        .select-wrapper,
+        .input-wrapper {
+            max-width: 100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -35,7 +43,7 @@
                             <label>To</label>
                             <input type="date" class="date-picker" placeholder="To Date">
                         </div>
-                    </div>
+                    
 
                     <input type="text" class="search-input w-auto" placeholder="Patient or UHID...">
 
@@ -57,30 +65,32 @@
                             <option value="insurance">Insurance</option>
                         </select>
                     </div>
-
-                    <div class="radio-group">
-                        <label class="radio-item">
-                            <input type="radio" name="status" value="all" checked>
-                            <span>All</span>
-                        </label>
-                        <label class="radio-item">
-                            <input type="radio" name="status" value="paid">
-                            <span>Paid</span>
-                        </label>
-                        <label class="radio-item">
-                            <input type="radio" name="status" value="due">
-                            <span>Due</span>
-                        </label>
-                    </div>
-                    <div class="actions">
-                        <button class="actions-btn" onclick="toggleDropdown(this)">⋮</button>
-                        <div class="dropdown">
-                            <a href="./newpatientregister.html">Admit</a>
-                            <a href="./existpatietregisteration.html">Pre-Book</a>
-                            <a href="./bedavailability.html">Bed Availability</a>
-                            <a href="#">Bill Summary</a>
+                    <div class="d-flex">
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="status" value="all" checked>
+                                <span>All</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="status" value="paid">
+                                <span>Paid</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="status" value="due">
+                                <span>Due</span>
+                            </label>
+                        </div>
+                        <div class="actions">
+                            <button class="actions-btn" onclick="toggleDropdown(this)">⋮</button>
+                            <div class="dropdown">
+                                <a href="./newpatientregister.html">Admit</a>
+                                <a href="./existpatietregisteration.html">Pre-Book</a>
+                                <a href="./bedavailability.html">Bed Availability</a>
+                                <a href="#">Bill Summary</a>
+                            </div>
                         </div>
                     </div>
+                </div>
                 </div>
 
                 <div class="table-container">

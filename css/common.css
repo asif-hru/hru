@@ -335,7 +335,7 @@ td {
 }
 /* border right seprater */
 .border-right-seprster {
-  border-right: 1.5px solid var(--black-color);
+  border-right: 1.5px solid #ccc;
 }
 
 /* Patient avatar */
