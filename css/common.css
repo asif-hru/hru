@@ -8,6 +8,10 @@ h1,h2,h3,h4,h5,h6,p {
   padding: 0;
   margin: 0;
 }
+ul,ol,dl {
+  margin: 0;
+  padding: 0;
+}
 .date-picker, .search-input, .select-input {
   padding: 5px 12px;
   border: 1px solid #e2e8f0;
@@ -377,7 +381,7 @@ td {
 }
 
 .patient-name {
-  font-size: 1rem;
+  font-size: 14px;
   font-weight: 600;
   margin-bottom: 0.25rem;
 }
@@ -541,3 +545,66 @@ td {
   opacity: 1;
 }
 
+
+
+/* Sidebar CSS */
+ .sidebar {
+        background-color: var(--heading-bg-color);
+        color: white;
+        transition: width 0.3s;
+        overflow: hidden;
+        height: 100vh;
+        z-index: 1;
+    }
+    .sidebar .sidebar-logo {
+        border-radius: 0 0 30px 0;
+        background-color: #fff;
+        padding: 5px 0;
+    }
+    .sidebar .toggle-btn {
+        background-color: transparent;
+        color: white;
+        border: none;
+        font-size: 20px;
+        position: relative;
+        left: 10px;
+        padding: 10px;
+        cursor: pointer;
+    }
+    .sidebar ul.menu {
+        list-style: none;
+        padding-top: 20px;
+    }
+    .sidebar ul.menu li {
+        padding: 0;
+        text-align: left;
+        margin-bottom: 5px;
+    }
+    .sidebar ul.menu li a {
+        text-decoration: none;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 7px;
+        transition: background-color 0.3s;
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+        justify-content: center;
+    }
+    .sidebar ul.menu li a:hover,
+    .sidebar ul.menu li a.active {
+        background-color: var(--primary-bg-color);
+    }
+    .menu i {
+        font-size: 18px;
+        position: relative;
+        left: 5px;
+        color: red;
+    }
+    .menu span {
+        margin-left: 5px;
+    }
+    .sidebar.collapsed {
+        width: 60px;
+    }

@@ -32,103 +32,136 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 py-1">
-                <div class="filters">
-                    <div class="filter-group">
-                        <div class="d-flex flex-column input-wrapper">
-                            <label>From</label>
-                            <input type="date" class="date-picker" placeholder="From Date">
-                        </div>
-                        <div class="d-flex flex-column input-wrapper">
-                            <label>To</label>
-                            <input type="date" class="date-picker" placeholder="To Date">
-                        </div>
-                    
-
-                    <input type="text" class="search-input w-auto" placeholder="Patient or UHID...">
-
-                    <div class="select-wrapper">
-                        <label>Select Doctor</label>
-                        <select class="select-input">
-                            <option hidden></option>
-                            <option value="dr1">Dr. Smith</option>
-                            <option value="dr2">Dr. Johnson</option>
-                            <option value="dr3">Dr. Williams</option>
-                        </select>
+            <div class="px-0" style="width: 10%">
+                <div class="sidebar">
+                    <div class="sidebar-logo">
+                        <img src="./assets/logo.png" width="100px" alt="hru logo" />
                     </div>
-                    <div class="select-wrapper">
-                        <label>Payment Type</label>
-                        <select class="select-input">
-                            <option hidden></option>
-                            <option value="cash">Cash</option>
-                            <option value="card">Card</option>
-                            <option value="insurance">Insurance</option>
-                        </select>
-                    </div>
-                    <div class="d-flex">
-                        <div class="radio-group">
-                            <label class="radio-item">
-                                <input type="radio" name="status" value="all" checked>
-                                <span>All</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="status" value="paid">
-                                <span>Paid</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="status" value="due">
-                                <span>Due</span>
-                            </label>
-                        </div>
-                        <div class="actions">
-                            <button class="actions-btn" onclick="toggleDropdown(this)">⋮</button>
-                            <div class="dropdown">
-                                <a href="./newpatientregister.html">Admit</a>
-                                <a href="./existpatietregisteration.html">Pre-Book</a>
-                                <a href="./bedavailability.html">Bed Availability</a>
-                                <a href="#">Bill Summary</a>
+                    <button class="toggle-btn"></button>
+                    <ul class="menu">
+                        <li><a href="#" class="menu-item active">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" width="20px" xmlns="http://www.w3.org/2000/svg"><path d="M261.56 101.28a8 8 0 0 0-11.06 0L66.4 277.15a8 8 0 0 0-2.47 5.79L63.9 448a32 32 0 0 0 32 32H192a16 16 0 0 0 16-16V328a8 8 0 0 1 8-8h80a8 8 0 0 1 8 8v136a16 16 0 0 0 16 16h96.06a32 32 0 0 0 32-32V282.94a8 8 0 0 0-2.47-5.79z"></path><path d="m490.91 244.15-74.8-71.56V64a16 16 0 0 0-16-16h-48a16 16 0 0 0-16 16v32l-57.92-55.38C272.77 35.14 264.71 32 256 32c-8.68 0-16.72 3.14-22.14 8.63l-212.7 203.5c-6.22 6-7 15.87-1.34 22.37A16 16 0 0 0 43 267.56L250.5 69.28a8 8 0 0 1 11.06 0l207.52 198.28a16 16 0 0 0 22.59-.44c6.14-6.36 5.63-16.86-.76-22.97z"></path></svg>
+                            <span class="my-tooltip">Home</span>
+                        </a></li>
+                        <li><a href="#" class="menu-item">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" width="20px" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"></path></svg>
+                            <span class="my-tooltip">Email</span>
+                        </a></li>
+                        <li><a href="#" class="menu-item">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" width="20px" xmlns="http://www.w3.org/2000/svg"><path d="M496 384H64V80c0-8.84-7.16-16-16-16H16C7.16 64 0 71.16 0 80v336c0 17.67 14.33 32 32 32h464c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16zM464 96H345.94c-21.38 0-32.09 25.85-16.97 40.97l32.4 32.4L288 242.75l-73.37-73.37c-12.5-12.5-32.76-12.5-45.25 0l-68.69 68.69c-6.25 6.25-6.25 16.38 0 22.63l22.62 22.62c6.25 6.25 16.38 6.25 22.63 0L192 237.25l73.37 73.37c12.5 12.5 32.76 12.5 45.25 0l96-96 32.4 32.4c15.12 15.12 40.97 4.41 40.97-16.97V112c.01-8.84-7.15-16-15.99-16z"></path></svg>
+                            <span class="my-tooltip">Graph</span>
+                        </a>
+                        </li>
+                        <li><a href="#" class="menu-item">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" width="20px" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M9.68 13.69 12 11.93l2.31 1.76-.88-2.85L15.75 9h-2.84L12 6.19 11.09 9H8.25l2.31 1.84-.88 2.85zM20 10c0-4.42-3.58-8-8-8s-8 3.58-8 8c0 2.03.76 3.87 2 5.28V23l6-2 6 2v-7.72A7.96 7.96 0 0 0 20 10zm-8-6c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6 2.69-6 6-6z"></path></svg>
+                            <span class="my-tooltip">Premium</span>
+                        </a></li>
+                        <li><a href="#" class="menu-item">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" width="20px" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="m17 7-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"></path></svg>
+                            <span class="my-tooltip">Logout</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class=""  style="width: 90%">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="filters">
+                                <div class="filter-group">
+                                    <div class="d-flex flex-column input-wrapper">
+                                        <label>From</label>
+                                        <input type="date" class="date-picker" placeholder="From Date">
+                                    </div>
+                                    <div class="d-flex flex-column input-wrapper">
+                                        <label>To</label>
+                                        <input type="date" class="date-picker" placeholder="To Date">
+                                    </div>
+
+
+                                    <input type="text" class="search-input w-auto" placeholder="Patient or UHID...">
+
+                                    <div class="select-wrapper">
+                                        <label>Select Doctor</label>
+                                        <select class="select-input">
+                                            <option hidden></option>
+                                            <option value="dr1">Dr. Smith</option>
+                                            <option value="dr2">Dr. Johnson</option>
+                                            <option value="dr3">Dr. Williams</option>
+                                        </select>
+                                    </div>
+                                    <div class="select-wrapper">
+                                        <label>Payment Type</label>
+                                        <select class="select-input">
+                                            <option hidden></option>
+                                            <option value="cash">Cash</option>
+                                            <option value="card">Card</option>
+                                            <option value="insurance">Insurance</option>
+                                        </select>
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="radio-group">
+                                            <label class="radio-item">
+                                                <input type="radio" name="status" value="all" checked>
+                                                <span>All</span>
+                                            </label>
+                                            <label class="radio-item">
+                                                <input type="radio" name="status" value="paid">
+                                                <span>Paid</span>
+                                            </label>
+                                            <label class="radio-item">
+                                                <input type="radio" name="status" value="due">
+                                                <span>Due</span>
+                                            </label>
+                                        </div>
+                                        <div class="actions">
+                                            <button class="actions-btn" onclick="toggleDropdown(this)">⋮</button>
+                                            <div class="dropdown">
+                                                <a href="./newpatientregister.html">Admit</a>
+                                                <a href="./existpatietregisteration.html">Pre-Book</a>
+                                                <a href="./bedavailability.html">Bed Availability</a>
+                                                <a href="#">Bill Summary</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr class="header-row">
+                                            <th>No.</th>
+                                            <th>MLC</th>
+                                            <th>UHID</th>
+                                            <th>IPD NO</th>
+                                            <th>Patient</th>
+                                            <th>Mobile No</th>
+                                            <th>Age/Gender</th>
+                                            <th>Billing</th>
+                                            <th>Payer Name</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="patientTableBody">
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                </div>
-                </div>
-
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr class="header-row">
-                                <th>No.</th>
-                                <th>MLC</th>
-                                <th>UHID</th>
-                                <th>IPD NO</th>
-                                <th>Patient</th>
-                                <th>Mobile No</th>
-                                <th>Age/Gender</th>
-                                <th>Billing</th>
-                                <th>Payer Name</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="patientTableBody">
-                        </tbody>
-                    </table>
-                </div>
+                
+                    <div class="row">
+                        <div class="col-12">
+                            <div
+                                class="pagination d-flex justify-content-between flex-row flex-md-row align-items-center">
+                                <div>Items per page: 25</div>
+                                <div>1 - 25 of 398</div>
+                            </div>
+                        </div>
+                    </div>
+                
             </div>
         </div>
     </div>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 py-1">
-                <div class="pagination d-flex justify-content-between flex-row flex-md-row align-items-center">
-                    <div>Items per page: 25</div>
-                    <div>1 - 25 of 398</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
@@ -452,6 +485,7 @@
             tbody.appendChild(tr);
         });
     </script>
+    <script src="./js/sidebar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>

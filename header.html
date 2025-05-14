@@ -1,0 +1,32 @@
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Sidebar Menu</title>
+<link rel="stylesheet" href="./css/common.css" />
+<link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<style>
+   
+</style>
+
+<body>
+        
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const toggleBtn = document.querySelector('.toggle-btn');
+
+            sidebar.classList.toggle('collapsed');
+
+            // Update the toggle button arrow direction
+            if (sidebar.classList.contains('collapsed')) {
+                toggleBtn.innerHTML = '⮞'; // Point right when closed
+            } else {
+                toggleBtn.innerHTML = '⮜'; // Point left when open
+            }
+        }
+    </script>
+</body>
+
+</html>

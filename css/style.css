@@ -35,7 +35,7 @@
 }
 
 .table-container {
-    max-height: 83vh;
+    max-height: 86vh;
     overflow-x: auto;
     background: white;
     border-radius: 8px;
@@ -297,15 +297,31 @@
 
 
 /* nursing station css */
-.nursing-station-body .list-group div span {
-    font-size: 14px;
+.nursing-station-body .list-group span {
+    font-size: 12px;
     font-weight: 500;
     color: #000;
+}
+.nursing-station-body .list-group .nav-link {
+    width: 100%;
+    border-radius: 0;
+}
+.nursing-station-body .list-group .nav-link.active {
+    background-color: var(--heading-bg-color);
+}
+.nursing-station-body .list-group .my-sidebar-item.active span {
+    color: #fff;
+    font-weight: bold;
 }
 .nursing-station-body .list-group {
     overflow: auto;
     height: calc(100vh - 122px);
-    padding-top: 30px;
+}
+.nursing-station-body .list-group div:hover {
+    background-color: var(--heading-bg-color);
+}
+.nursing-station-body .list-group div:hover span {
+    color: #fff;
 }
 .nursing-station-body .left-angle {
     width: 30px;
