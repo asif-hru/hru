@@ -1,0 +1,138 @@
+.bed {
+      padding: 3px 0;
+      border-radius: 8px;
+      color: #fff;
+      margin: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .bed h2 {
+      padding: 0 5px 3px;
+      font-size: 11px;
+      font-weight: 600;
+
+    }
+
+    .bed p {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 2px 5px 0;
+      border-top: 1.5px solid #fff;
+      text-transform: uppercase;
+    }
+
+    .bed-in-maintain {
+      background-color: #fd7e14;
+    }
+
+    .overflow-bed-info {
+      max-height: 110px;
+      overflow: auto;
+    }
+
+    .bed-status {
+      width: 10px;
+      height: 10px;
+      border-radius: 100px;
+    }
+
+    .bed-status-text {
+      font-size: 12px;
+      display: inline-block;
+    }
+
+    .bg-orange {
+      background-color: #fd7e14;
+    }
+
+    .title-select {
+      width: 60px;
+      padding: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      border-right: none;
+      outline: none;
+      background-color: white;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+    }
+
+    .name-input:focus {
+      outline: unset;
+    }
+
+    .profile-pic {
+      width: 60px;
+      height: 60px;
+      background-color: #e9ecef;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+
+    .upload-btn {
+      width: 30px;
+      height: 30px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .upload-btn:focus {
+      box-shadow: unset;
+    }
+
+    .toggle-image-hover img {
+      opacity: .5;
+    }
+
+    .toggle-image-hover:hover img {
+      opacity: 1;
+    }
+
+    .section-header {
+      background-color: #f8f9fa;
+      padding: 6px;
+      margin-bottom: 5px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .overflow-form {
+      max-height: 150px;
+      overflow: auto;
+    }
+
+    .header-yellow {
+      background-color: #ffc107;
+      padding: 5px 12px;
+      font-size: 11px;
+      margin-bottom: 7px;
+      text-transform: uppercase;
+    }
+
+    .gender-label {
+      font-size: 12px;
+      vertical-align: middle;
+      font-weight: bold;
+      margin-bottom: 3px;
+    }
+
+    .gender-label label {
+      font-size: 12px !important;
+      font-weight: 500;
+    }
+
+    .select-wrapper,
+    .input-wrapper {
+      max-width: 100%;
+    }

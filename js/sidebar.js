@@ -1,12 +1,6 @@
-let menuItem = document.getElementsByClassName("menu-item");
-console.log(menuItem);
-Array.from(menuItem).forEach(element => {
-    console.log(element);
-    element.addEventListener('click', () => {
-        Array.from(menuItem).forEach(ele => {
-            ele.classList.remove('active');
-        });
-
-        element.classList.add('active');
-    })
-});
+let menuItem = document.getElementById("menu-sidebar");
+let headerHamburger = document.getElementById("header-hamburger");
+console.log("menuItem",menuItem);
+headerHamburger.addEventListener('click', () => {
+    menuItem.classList.toggle('toggle-sidebar');
+})

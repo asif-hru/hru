@@ -2,996 +2,663 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <!-- Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="./css/common.css" />
+  <link rel="stylesheet" href="./css/common.css" />
+  <link rel="stylesheet" href="./css/add-service.style.css" />
 
-    <title>IPD Registration Form</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Roboto, sans-serif;
-        }
-
-        body {
-            background-color: #f8f9fa;
-            padding: 5px 0;
-        }
-
-        @media (max-width: 600px) {
-            .input-wrapper input {
-                min-width: unset;
-            }
-        }
-
-        .select-wrapper {
-            max-width: 100%;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .patient-header {
-            background-color: #fff3cd;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            display: flex;
-            gap: 1rem;
-        }
-
-        .patient-header .edit-profile-icon {
-            width: 20px;
-            cursor: pointer;
-        }
-
-        .form-container {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-grid {
-            display: grid;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        label {
-            font-size: 11px;
-            font-weight: 500;
-            color: #374151;
-        }
-
-
-        .date-time-group {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .date-time-group button {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem;
-            background-color: white;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        .radio-group {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .radio-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .form-actions {
-            display: flex;
-            justify-content: flex-end;
-            gap: 0.75rem;
-            margin-top: 2rem;
-        }
-
-        .btn {
-            padding: 5px 12px;
-            border-radius: 6px;
-            font-size: 12px;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-outline {
-            background-color: white;
-            border: 1px solid #d1d5db;
-        }
-
-        .btn-primary {
-            background-color: #2563eb;
-            color: white;
-        }
-
-        @media (min-width: 768px) {
-            .form-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .form-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 1rem;
-            }
-
-            .form-container {
-                padding: 10px;
-            }
-
-            .form-group {
-                gap: 0.25rem;
-            }
-        }
-
-
-        /* add service */
-        .fixed-footer {
-            position: fixed;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 100%;
-            background: #fff;
-            border-top: 1px solid #dee2e6;
-            padding: 16px 0;
-            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.03);
-            z-index: 1000;
-        }
-
-        .ref-text {
-            color: #333;
-            font-size: 14px;
-        }
-
-        .small-text {
-            font-size: 12px;
-            color: #666;
-        }
-
-        .time-input-group .form-control {
-            width: 100px;
-            font-size: 12px;
-            height: 28px;
-        }
-
-        .time-btn {
-            background: none;
-            border: 1px solid #ced4da;
-            border-left: none;
-            height: 28px;
-        }
-
-        .table td,
-        .table th {
-            vertical-align: middle;
-        }
-
-        @media (max-width: 540px) {
-            .patient-avatar {
-                width: 34px;
-                height: 34px;
-                font-size: 18px;
-            }
-
-            .table-responsive {
-                font-size: 12px;
-            }
-        }
-
-
-        .table-container {
-            max-height: 43vh;
-            overflow-x: auto;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            padding: 3px;
-            text-align: left;
-            border-bottom: 1px solid #e2e8f0;
-            white-space: nowrap;
-        }
-
-        th {
-            padding: 5px;
-            background-color: #f8fafc;
-            font-weight: 600;
-            font-size: 12px;
-            color: #1e293b;
-        }
-
-        td {
-            font-size: 11px;
-            color: #475569dc;
-            font-weight: 600;
-        }
-
-        .date-picker {
-            min-width: unset;
-        }
-    </style>
+  <title>IPD Registration Form</title>
 </head>
 
 <body>
-    <div class="container-fluid position-relative">
-        <!-- Patient Header -->
-        <div class="patient-header justify-content-between position-absolute"
-            style="top: 0;left: 10px;right: 10px;z-index: 100;">
-            <div class="d-flex align-items-start justify-content-between col-11 col-md-10 col-lg-8 col-xl-6">
-                <div class="d-flex align-items-center">
-                    <div class="patient-avatar">S</div>
-                    <div class="patient-info ms-3">
-                        <h1 class="patient-name">MS. SONIYA SHARMA, (25 Y/ F)</h1>
-                        <div class="patient-contact">+91 7016482092</div>
-                        <div class="patient-contact">REF: ---</div>
-                    </div>
+  <!-- Header and Sidebar -->
+  <header class="header">
+    <div class="hamburger" id="header-hamburger">
+      <img src="./assets/menu.png" alt="menu icon" />
+    </div>
+    <div class="brand-logo">
+      <img src="./assets/logo.png" alt="logo image" />
+    </div>
+  </header>
+  <div class="sidebar" id="menu-sidebar">
+    <div class="sidebar-menu">
+      <a href="#" class="sidebar-link">
+        <span>Home</span>
+      </a>
+      <a href="#" class="sidebar-link">
+        <span>Profile</span>
+      </a>
+      <a href="#" class="sidebar-link">
+        <span>Settings</span>
+      </a>
+      <a href="#" class="sidebar-link">
+        <span>About</span>
+      </a>
+    </div>
+    <div class="sidebar-logout">
+      <a href="#" class="sidebar-link logout">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="container-fluid container-md position-relative">
+    <!-- Patient Header -->
+    <div class="patient-header justify-content-between position-absolute" style="top: 0;left: 10px;right: 10px;z-index: 100;">
+          <div class="row w-100">
+            <div class="col-10 col-sm-7">
+              <div class="d-flex align-items-center justify-content-between">
+                <div class="patient-avatar">S</div>
+                <div class="patient-info">
+                  <h1 class="patient-name">MS. SONIYA SHARMA, (25 Y/ F)</h1>
+                  <div class="patient-contact">+91 7016482092</div>
+                  <div class="patient-contact">REF: ---</div>
                 </div>
-                <p><b>DOB:</b> 12/12/2025</p>
+              </div>
             </div>
-            <div>
-                <figure>
-                    <img class="edit-profile-icon" src="./assets/edit.png" alt="edit icon" />
-                </figure>
+            <div class="col-2 col-sm-1 text-end order-sm-2">
+              <figure>
+                <img class="edit-profile-icon order-1" src="./assets/edit.png" alt="edit icon" />
+              </figure>
             </div>
-        </div>
-
-        <!-- Form Container -->
-        <div class="form-container">
-            <h2 class="sub-heading heading-color">IPD Detail</h2>
-
-            <form id="ipdForm">
-                <div class="form-grid align-items-center">
-                    <!-- IPD Number -->
-                    <div class="form-group">
-                        <input type="text" placeholder="IPD Registration Number" id="ipdNumber" value="">
-                    </div>
-
-                    <!-- Admission Date/Time -->
-                    <div class="form-group">
-                        <div class="date-time-group">
-                            <div class="input-wrapper">
-                                <label>Date</label>
-                                <input type="date" class="date-picker" placeholder="From Date">
-                            </div>
-                            <div class="input-wrapper">
-                                <label>Time</label>
-                                <input type="time" class="date-picker" placeholder="From Date">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Provider -->
-                    <div class="form-group select-wrapper">
-                        <label for="provider">Select provider</label>
-                        <select id="provider">
-                            <option hidden></option>
-                            <option value="1">Provider 1</option>
-                            <option value="2">Provider 2</option>
-                        </select>
-                    </div>
-
-                    <!-- Admitting Doctor -->
-                    <div class="form-group select-wrapper">
-                        <label for="doctor">Admitting Doctor</label>
-                        <select id="doctor">
-                            <option hidden></option>
-                            <option value="1">Dr. Smith</option>
-                            <option value="2">Dr. Johnson</option>
-                        </select>
-                    </div>
-
-                    <!-- Secondary Consultant -->
-                    <div class="form-group select-wrapper">
-                        <label for="consultant">Secondary Consultant</label>
-                        <select id="consultant">
-                            <option hidden></option>
-                            <option value="1">Dr. Williams</option>
-                            <option value="2">Dr. Brown</option>
-                        </select>
-                    </div>
-
-                    <!-- Referred By -->
-                    <div class="form-group select-wrapper">
-                        <label for="referral">Referred By</label>
-                        <select id="referral">
-                            <option hidden></option>
-                            <option value="1">Dr. Davis</option>
-                            <option value="2">Dr. Miller</option>
-                        </select>
-                    </div>
-
-                    <!-- Admission Type -->
-                    <div class="form-group">
-                        <label>Admission Type</label>
-                        <div class="radio-group">
-                            <label class="radio-item">
-                                <input type="radio" name="admissionType" value="planned" checked>
-                                <span>Planned</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="admissionType" value="emergency">
-                                <span>Emergency</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Treatment Type -->
-                    <div class="form-group">
-                        <label>Treatment Type</label>
-                        <div class="radio-group">
-                            <label class="radio-item">
-                                <input type="radio" name="treatmentType" value="medical" checked>
-                                <span>Medical</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="treatmentType" value="surgical">
-                                <span>Surgical</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Admission Reason -->
-                    <div class="form-group">
-                        <input type="text" id="reason" placeholder="Enter admission reason">
-                    </div>
-
-                    <!-- Diagnosis -->
-                    <div class="form-group">
-                        <textarea id="diagnosis" rows="2" placeholder="Enter diagnosis"></textarea>
-                    </div>
-
-                    <!-- Remark -->
-                    <div class="form-group">
-                        <textarea id="remark" rows="2" placeholder="Enter remarks"></textarea>
-                    </div>
-                </div>
-
-                <!-- MLC Case Checkbox -->
-                <div class="form-group">
-                    <label class="radio-item">
-                        <input type="checkbox" class="w-auto" id="mlcCase">
-                        <span>Is MLC case?</span>
-                    </label>
-                </div>
-
-                <!-- Tabs -->
-
-                <ul class="nav nav-tabs mt-2" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active " data-bs-toggle="tab" href="#selct-bed">
-                            Assign Bed
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#payer">Payer Details</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#kin-details">Kin Details</a>
-                    </li>
-                </ul>
-                <div class="tab-content p-1 border border-0">
-                    <div class="tab-pane fade show active" id="selct-bed">
-                        <div class="row align-items-center">
-                            <div class="col-12 col-md-4 col-lg-2">
-                                <div class="form-group input-wrapper">
-                                    <label>Floor</label>
-                                    <input type="text" />
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4 col-lg-2">
-                                <div class="form-group input-wrapper">
-                                    <label>Ward</label>
-                                    <input type="text" />
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4 col-lg-2">
-                                <div class="form-group input-wrapper">
-                                    <label>Ward Category</label>
-                                    <input type="text" />
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4 col-lg-2">
-                                <div class="form-group input-wrapper">
-                                    <label>Bed No.</label>
-                                    <input type="text" />
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4 col-lg-2">
-                                <div class="form-group input-wrapper">
-                                    <label for="patient-type">Patient Type</label>
-                                    <select id="patient-type">
-                                        <option hidden></option>
-                                        <option value="1">Regular</option>
-                                        <option value="2">VIP</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4 col-lg-2">
-                                <button class="common-btn primary-bg-color" data-bs-toggle="modal"
-                                    data-bs-target="#update-service-modal">Update Service</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade show" id="payer">
-                        <a class="text-white text-decoration-none common-btn primary-bg-color"
-                            href="./wardassign.html">Select Bed</a>
-                    </div>
-                    <div class="tab-pane fade show" id="kin-details">
-                        <a class="text-white text-decoration-none common-btn primary-bg-color"
-                            href="./wardassign.html">Select Bed</a>
-                    </div>
-                </div>
-
-                <!-- Form Actions -->
-                <div class="form-actions">
-                    <a class="text-white text-decoration-none common-btn gray-bg-color"
-                        href="./dashboard.html">Cancel</a>
-                    <a class="text-white text-decoration-none common-btn primary-bg-color"
-                        href="./dashboard.html">Save</a>
-                    <button type="button" class="common-btn primary-bg-color" data-bs-toggle="modal"
-                        data-bs-target="#label-modal">Save & Print</button>
-                </div>
-            </form>
-        </div>
+            <div class="col-6 col-sm-4 mt-3 mt-sm-0 order-sm-1 text-sm-end">
+              <p><b>DOB:</b> 12/12/2025</p>
+            </div>
+          </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="label-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Print IPD Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center fst-bold" style="font-size: 14px;">
-                    <button type="submit" class="common-btn primary-bg-color text-capitalize m-1">Label Print</button>
-                    <button type="submit" class="common-btn primary-bg-color text-capitalize m-1">case record
-                        sticker</button>
-                    <button type="submit" class="common-btn primary-bg-color text-capitalize m-1">indoor file
-                        sticker</button>
-                    <button type="submit" class="common-btn primary-bg-color text-capitalize m-1">wrist bond</button>
-                    <button type="submit" class="common-btn primary-bg-color text-capitalize m-1">ipd consent
-                        form</button>
-                    <button type="submit" class="common-btn primary-bg-color text-capitalize m-1">gate pass</button>
-                    <button type="submit" class="common-btn primary-bg-color text-capitalize m-1">form</button>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="common-btn btn-danger" data-bs-dismiss="modal">No</button>
-                    <a class="text-decoration-none common-btn primary-bg-color" href="./dashboard.html">Yes</a>
-                </div>
+    <!-- Form Container -->
+    <div class="form-container">
+      <h2 class="sub-heading secondary-color">IPD Detail</h2>
+
+      <form id="ipdForm">
+        <div class="form-grid align-items-center">
+          <!-- IPD Number -->
+          <div class="form-group">
+            <input type="text" placeholder="IPD Registration Number" id="ipdNumber" value="">
+          </div>
+
+          <!-- Admission Date/Time -->
+          <div class="form-group">
+            <div class="date-time-group">
+              <div class="input-wrapper">
+                <label>Date</label>
+                <input type="date" class="date-picker" placeholder="From Date">
+              </div>
+              <div class="input-wrapper">
+                <label>Time</label>
+                <input type="time" class="date-picker" placeholder="From Date">
+              </div>
             </div>
+          </div>
+
+          <!-- Provider -->
+          <div class="form-group select-wrapper">
+            <label for="provider">Select provider</label>
+            <select id="provider">
+              <option hidden></option>
+              <option value="1">Provider 1</option>
+              <option value="2">Provider 2</option>
+            </select>
+          </div>
+
+          <!-- Admitting Doctor -->
+          <div class="form-group select-wrapper">
+            <label for="doctor">Admitting Doctor</label>
+            <select id="doctor">
+              <option hidden></option>
+              <option value="1">Dr. Smith</option>
+              <option value="2">Dr. Johnson</option>
+            </select>
+          </div>
+
+          <!-- Secondary Consultant -->
+          <div class="form-group select-wrapper">
+            <label for="consultant">Secondary Consultant</label>
+            <select id="consultant">
+              <option hidden></option>
+              <option value="1">Dr. Williams</option>
+              <option value="2">Dr. Brown</option>
+            </select>
+          </div>
+
+          <!-- Referred By -->
+          <div class="form-group select-wrapper">
+            <label for="referral">Referred By</label>
+            <select id="referral">
+              <option hidden></option>
+              <option value="1">Dr. Davis</option>
+              <option value="2">Dr. Miller</option>
+            </select>
+          </div>
+
+          <!-- Admission Type -->
+          <div class="form-group">
+            <label>Admission Type</label>
+            <div class="radio-group">
+              <label class="radio-item">
+                <input type="radio" name="admissionType" value="planned" checked>
+                <span>Planned</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="admissionType" value="emergency">
+                <span>Emergency</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Treatment Type -->
+          <div class="form-group">
+            <label>Treatment Type</label>
+            <div class="radio-group">
+              <label class="radio-item">
+                <input type="radio" name="treatmentType" value="medical" checked>
+                <span>Medical</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="treatmentType" value="surgical">
+                <span>Surgical</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Admission Reason -->
+          <div class="form-group">
+            <input type="text" id="reason" placeholder="Enter admission reason">
+          </div>
+
+          <!-- Diagnosis -->
+          <div class="form-group">
+            <textarea id="diagnosis" rows="2" placeholder="Enter diagnosis"></textarea>
+          </div>
+
+          <!-- Remark -->
+          <div class="form-group">
+            <textarea id="remark" rows="2" placeholder="Enter remarks"></textarea>
+          </div>
         </div>
+
+        <!-- MLC Case Checkbox -->
+        <div class="form-group">
+          <label class="radio-item">
+            <input type="checkbox" class="w-auto" id="mlcCase">
+            <span>Is MLC case?</span>
+          </label>
+        </div>
+
+        <!-- Tabs -->
+
+        <ul class="nav nav-tabs mt-2" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active " data-bs-toggle="tab" href="#selct-bed">
+              Assign Bed
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" href="#payer">Payer Details</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" href="#kin-details">Kin Details</a>
+          </li>
+        </ul>
+        <div class="tab-content p-1 border border-0">
+          <div class="tab-pane fade show active" id="selct-bed">
+            <div class="row align-items-center">
+              <div class="col-12 col-md-4 col-lg-2">
+                <div class="form-group input-wrapper">
+                  <label>Floor</label>
+                  <input type="text" />
+                </div>
+              </div>
+              <div class="col-12 col-md-4 col-lg-2">
+                <div class="form-group input-wrapper">
+                  <label>Ward</label>
+                  <input type="text" />
+                </div>
+              </div>
+              <div class="col-12 col-md-4 col-lg-2">
+                <div class="form-group input-wrapper">
+                  <label>Ward Category</label>
+                  <input type="text" />
+                </div>
+              </div>
+              <div class="col-12 col-md-4 col-lg-2">
+                <div class="form-group input-wrapper">
+                  <label>Bed No.</label>
+                  <input type="text" />
+                </div>
+              </div>
+              <div class="col-12 col-md-4 col-lg-2">
+                <div class="form-group input-wrapper">
+                  <label for="patient-type">Patient Type</label>
+                  <select id="patient-type">
+                    <option hidden></option>
+                    <option value="1">Regular</option>
+                    <option value="2">VIP</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-12 col-md-4 col-lg-2">
+                <button class="common-btn primary-bg-color" data-bs-toggle="modal"
+                  data-bs-target="#update-service-modal">Update Service</button>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade show" id="payer">
+            <a class="text-white text-decoration-none common-btn primary-bg-color" href="./wardassign.html">Select
+              Bed</a>
+          </div>
+          <div class="tab-pane fade show" id="kin-details">
+            <a class="text-white text-decoration-none common-btn primary-bg-color" href="./wardassign.html">Select
+              Bed</a>
+          </div>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="form-actions">
+          <a class="text-white text-decoration-none common-btn gray-bg-color" href="./dashboard.html">Cancel</a>
+          <a class="text-white text-decoration-none common-btn primary-bg-color" href="./dashboard.html">Save</a>
+          <button type="button" class="common-btn primary-bg-color" data-bs-toggle="modal"
+            data-bs-target="#label-modal">Save & Print</button>
+        </div>
+      </form>
     </div>
+  </div>
 
-    <div class="modal fade" id="update-service-modal" tabindex="-1" aria-labelledby="update-service" aria-hidden="true">
-        <div class="modal-dialog" style="max-width: 1100px;">
-            <div class="modal-content">
-                <div class="modal-header border-0">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-0" style="font-size: 14px;">
-                    <div class="container-fluid pt-3 pb-1">
-                        <div class="col-12">
-            <div class="card shadow-sm border-0 mb-3">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="d-flex">
-                                <div class="patient-avatar">R</div>
-                                <div>
-                                    <div class="fw-bold">MR. RAJKUMAR SHINDE, 36 Y, M</div>
-                                    <div class="small-text">+91 1212121212</div>
-                                    <div class="small-text">REF: DR. HARSH</div>
-                                    <div class="small-text">DOB: DR. 12/12/2014</div>
-                                    <div class="small-text">UHID: HC01949</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="small-text">BED No/ Ward Name: S-4/ Special one</div>
-                            <div class="small-text">IPD NO: IPD-842</div>
-                            <div class="small-text heading-color">PAYER NAME: SBI HEALTH INSURANCE</div>
-                            <div class="small-text">ADMITTING DR: HEALTHRAY AHMEDABAD, DR. YOGESH B...</div>
-                        </div>
-                        <div class="col-4">
-                            <div class="small-text">DOA: 10/04/2025 03:53 PM - TODAY</div>
-                            <div class="small-text">PAYER: SBI HEALTH INSURANCE</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- Modal -->
+  <div class="modal fade" id="label-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Print IPD Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-                    </div>
-
-                    <!-- Table for bed history -->
-                    <div class="container-fluid pt-1">
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr class="header-row">
-                                        <th>Ward Name</th>
-                                        <th>Bed Number</th>
-                                        <th>Allocated On</th>
-                                        <th>Allocated By</th>
-                                        <th>Shifted On</th>
-                                        <th>Number of Minutes</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><input type="text" placeholder="Ward Name" /></td>
-                                        <td><input type="text" placeholder="Bed Number" /></td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <input type="date" class="date-picker" placeholder="From Date">
-                                                </div>
-                                                <div class="ms-1">
-                                                    <input type="time" class="date-picker" placeholder="From Date">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>Dr. Chetanya Dabi</td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <input type="date" class="date-picker" placeholder="From Date">
-                                                </div>
-                                                <div class="ms-1">
-                                                    <input type="time" class="date-picker" placeholder="From Date">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>8 Minutes</td>
-                                        <td>
-                                            <button class="btn-sm p-0 me-2 border-0 bg-white"><img
-                                                    src="./assets/plus.png" width="15" /></button>
-                                            <button class="btn-sm p-0 me-2 border-0 bg-white"><img
-                                                    src="./assets/trash-can.png" width="15" /></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="text" placeholder="Ward Name" /></td>
-                                        <td><input type="text" placeholder="Bed Number" /></td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <input type="date" class="date-picker" placeholder="From Date">
-                                                </div>
-                                                <div class="ms-1">
-                                                    <input type="time" class="date-picker" placeholder="From Date">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>Dr. Chetanya Dabi</td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <input type="date" class="date-picker" placeholder="From Date">
-                                                </div>
-                                                <div class="ms-1">
-                                                    <input type="time" class="date-picker" placeholder="From Date">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>8 Minutes</td>
-                                        <td>
-                                            <button class="btn-sm p-0 me-2 border-0 bg-white"><img
-                                                    src="./assets/plus.png" width="15" /></button>
-                                            <button class="btn-sm p-0 me-2 border-0 bg-white"><img
-                                                    src="./assets/trash-can.png" width="15" /></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="text" placeholder="Ward Name" /></td>
-                                        <td><input type="text" placeholder="Bed Number" /></td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <input type="date" class="date-picker" placeholder="From Date">
-                                                </div>
-                                                <div class="ms-1">
-                                                    <input type="time" class="date-picker" placeholder="From Date">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>Dr. Chetanya Dabi</td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <input type="date" class="date-picker" placeholder="From Date">
-                                                </div>
-                                                <div class="ms-1">
-                                                    <input type="time" class="date-picker" placeholder="From Date">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>8 Minutes</td>
-                                        <td>
-                                            <button class="btn-sm p-0 me-2 border-0 bg-white"><img
-                                                    src="./assets/plus.png" width="15" /></button>
-                                            <button class="btn-sm p-0 me-2 border-0 bg-white"><img
-                                                    src="./assets/trash-can.png" width="15" /></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="text" placeholder="Ward Name" /></td>
-                                        <td><input type="text" placeholder="Bed Number" /></td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <input type="date" class="date-picker" placeholder="From Date">
-                                                </div>
-                                                <div class="ms-1">
-                                                    <input type="time" class="date-picker" placeholder="From Date">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>Dr. Chetanya Dabi</td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <input type="date" class="date-picker" placeholder="From Date">
-                                                </div>
-                                                <div class="ms-1">
-                                                    <input type="time" class="date-picker" placeholder="From Date">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>8 Minutes</td>
-                                        <td>
-                                            <button class="btn-sm p-0 me-2 border-0 bg-white"><img
-                                                    src="./assets/plus.png" width="15" /></button>
-                                            <button class="btn-sm p-0 me-2 border-0 bg-white"><img
-                                                    src="./assets/trash-can.png" width="15" /></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="text" placeholder="Ward Name" /></td>
-                                        <td><input type="text" placeholder="Bed Number" /></td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <input type="date" class="date-picker" placeholder="From Date">
-                                                </div>
-                                                <div class="ms-1">
-                                                    <input type="time" class="date-picker" placeholder="From Date">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>Dr. Chetanya Dabi</td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <input type="date" class="date-picker" placeholder="From Date">
-                                                </div>
-                                                <div class="ms-1">
-                                                    <input type="time" class="date-picker" placeholder="From Date">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>8 Minutes</td>
-                                        <td>
-                                            <button class="btn-sm p-0 me-2 border-0 bg-white"><img
-                                                    src="./assets/plus.png" width="15" /></button>
-                                            <button class="btn-sm p-0 me-2 border-0 bg-white"><img
-                                                    src="./assets/trash-can.png" width="15" /></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="text" placeholder="Ward Name" /></td>
-                                        <td><input type="text" placeholder="Bed Number" /></td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <input type="date" class="date-picker" placeholder="From Date">
-                                                </div>
-                                                <div class="ms-1">
-                                                    <input type="time" class="date-picker" placeholder="From Date">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>Dr. Chetanya Dabi</td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <input type="date" class="date-picker" placeholder="From Date">
-                                                </div>
-                                                <div class="ms-1">
-                                                    <input type="time" class="date-picker" placeholder="From Date">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>8 Minutes</td>
-                                        <td>
-                                            <button class="btn-sm p-0 me-2 border-0 bg-white"><img
-                                                    src="./assets/plus.png" width="15" /></button>
-                                            <button class="btn-sm p-0 me-2 border-0 bg-white"><img
-                                                    src="./assets/trash-can.png" width="15" /></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="text" placeholder="Ward Name" /></td>
-                                        <td><input type="text" placeholder="Bed Number" /></td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <input type="date" class="date-picker" placeholder="From Date">
-                                                </div>
-                                                <div class="ms-1">
-                                                    <input type="time" class="date-picker" placeholder="From Date">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>Dr. Chetanya Dabi</td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <input type="date" class="date-picker" placeholder="From Date">
-                                                </div>
-                                                <div class="ms-1">
-                                                    <input type="time" class="date-picker" placeholder="From Date">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>8 Minutes</td>
-                                        <td>
-                                            <button class="btn-sm p-0 me-2 border-0 bg-white"><img
-                                                    src="./assets/plus.png" width="15" /></button>
-                                            <button class="btn-sm p-0 me-2 border-0 bg-white"><img
-                                                    src="./assets/trash-can.png" width="15" /></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="text" placeholder="Ward Name" /></td>
-                                        <td><input type="text" placeholder="Bed Number" /></td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <input type="date" class="date-picker" placeholder="From Date">
-                                                </div>
-                                                <div class="ms-1">
-                                                    <input type="time" class="date-picker" placeholder="From Date">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>Dr. Chetanya Dabi</td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <input type="date" class="date-picker" placeholder="From Date">
-                                                </div>
-                                                <div class="ms-1">
-                                                    <input type="time" class="date-picker" placeholder="From Date">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>8 Minutes</td>
-                                        <td>
-                                            <button class="btn-sm p-0 me-2 border-0 bg-white"><img
-                                                    src="./assets/plus.png" width="15" /></button>
-                                            <button class="btn-sm p-0 me-2 border-0 bg-white"><img
-                                                    src="./assets/trash-can.png" width="15" /></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="text" placeholder="Ward Name" /></td>
-                                        <td><input type="text" placeholder="Bed Number" /></td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <input type="date" class="date-picker" placeholder="From Date">
-                                                </div>
-                                                <div class="ms-1">
-                                                    <input type="time" class="date-picker" placeholder="From Date">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>Dr. Chetanya Dabi</td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <input type="date" class="date-picker" placeholder="From Date">
-                                                </div>
-                                                <div class="ms-1">
-                                                    <input type="time" class="date-picker" placeholder="From Date">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>8 Minutes</td>
-                                        <td>
-                                            <button class="btn-sm p-0 me-2 border-0 bg-white"><img
-                                                    src="./assets/plus.png" width="15" /></button>
-                                            <button class="btn-sm p-0 me-2 border-0 bg-white"><img
-                                                    src="./assets/trash-can.png" width="15" /></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="text" placeholder="Ward Name" /></td>
-                                        <td><input type="text" placeholder="Bed Number" /></td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <input type="date" class="date-picker" placeholder="From Date">
-                                                </div>
-                                                <div class="ms-1">
-                                                    <input type="time" class="date-picker" placeholder="From Date">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>Dr. Chetanya Dabi</td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <input type="date" class="date-picker" placeholder="From Date">
-                                                </div>
-                                                <div class="ms-1">
-                                                    <input type="time" class="date-picker" placeholder="From Date">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>8 Minutes</td>
-                                        <td>
-                                            <button class="btn-sm p-0 me-2 border-0 bg-white"><img
-                                                    src="./assets/plus.png" width="15" /></button>
-                                            <button class="btn-sm p-0 me-2 border-0 bg-white"><img
-                                                    src="./assets/trash-can.png" width="15" /></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="text" placeholder="Ward Name" /></td>
-                                        <td><input type="text" placeholder="Bed Number" /></td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <input type="date" class="date-picker" placeholder="From Date">
-                                                </div>
-                                                <div class="ms-1">
-                                                    <input type="time" class="date-picker" placeholder="From Date">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>Dr. Chetanya Dabi</td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <input type="date" class="date-picker" placeholder="From Date">
-                                                </div>
-                                                <div class="ms-1">
-                                                    <input type="time" class="date-picker" placeholder="From Date">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>8 Minutes</td>
-                                        <td>
-                                            <button class="btn-sm p-0 me-2 border-0 bg-white"><img
-                                                    src="./assets/plus.png" width="15" /></button>
-                                            <button class="btn-sm p-0 me-2 border-0 bg-white"><img
-                                                    src="./assets/trash-can.png" width="15" /></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="text" placeholder="Ward Name" /></td>
-                                        <td><input type="text" placeholder="Bed Number" /></td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <input type="date" class="date-picker" placeholder="From Date">
-                                                </div>
-                                                <div class="ms-1">
-                                                    <input type="time" class="date-picker" placeholder="From Date">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>Dr. Chetanya Dabi</td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <input type="date" class="date-picker" placeholder="From Date">
-                                                </div>
-                                                <div class="ms-1">
-                                                    <input type="time" class="date-picker" placeholder="From Date">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>8 Minutes</td>
-                                        <td>
-                                            <button class="btn-sm p-0 me-2 border-0 bg-white"><img
-                                                    src="./assets/plus.png" width="15" /></button>
-                                            <button class="btn-sm p-0 me-2 border-0 bg-white"><img
-                                                    src="./assets/trash-can.png" width="15" /></button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="text-end mt-3">
-                            <button class="common-btn gray-bg-color">Add new history</button>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="modal-footer p-0 m-0 mt-2">
-                    <div class="container-fluid bottom-0 w-100 py-2 bg-white">
-                        <div class="row align-items-center justify-content-md-between justify-content-center">
-                            <div class="col-12 text-end">
-                                <button class="common-btn gray-bg-color">Cancel</button>
-                                <button class="common-btn primary-bg-color">Save</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="modal-body text-center fst-bold" style="font-size: 14px;">
+          <button type="submit" class="common-btn primary-bg-color text-capitalize m-1">Label Print</button>
+          <button type="submit" class="common-btn primary-bg-color text-capitalize m-1">case record
+            sticker</button>
+          <button type="submit" class="common-btn primary-bg-color text-capitalize m-1">indoor file
+            sticker</button>
+          <button type="submit" class="common-btn primary-bg-color text-capitalize m-1">wrist bond</button>
+          <button type="submit" class="common-btn primary-bg-color text-capitalize m-1">ipd consent
+            form</button>
+          <button type="submit" class="common-btn primary-bg-color text-capitalize m-1">gate pass</button>
+          <button type="submit" class="common-btn primary-bg-color text-capitalize m-1">form</button>
         </div>
+        <div class="modal-footer">
+          <button type="button" class="common-btn btn-danger" data-bs-dismiss="modal">No</button>
+          <a class="text-decoration-none common-btn primary-bg-color" href="./dashboard.html">Yes</a>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <div class="modal fade" id="update-service-modal" tabindex="-1" aria-labelledby="update-service" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 1100px;">
+      <div class="modal-content">
+        <div class="modal-body" style="font-size: 14px;">
+          <h5 class="sub-heading secondary-color mb-3 text-center">Update Services</h5>
+          <div class="container-fluid">
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr class="header-row">
+                    <th>Charge Type</th>
+                    <th>Item Name</th>
+                    <th>Repeat</th>
+                    <th>Unit</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <input type="number" />
+                    </td>
+                    <td>6500</td>
+                    <td><button class="btn-sm p-0 me-2 border-0 bg-white"><img src="./assets/trash-can.png"
+                          width="15" /></button>
+                      </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <input type="number" />
+                    </td>
+                    <td>6500</td>
+                    <td><button class="btn-sm p-0 me-2 border-0 bg-white"><img src="./assets/trash-can.png"
+                          width="15" /></button>
+                      </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <input type="number" />
+                    </td>
+                    <td>6500</td>
+                    <td><button class="btn-sm p-0 me-2 border-0 bg-white"><img src="./assets/trash-can.png"
+                          width="15" /></button>
+                      </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <input type="number" />
+                    </td>
+                    <td>6500</td>
+                    <td><button class="btn-sm p-0 me-2 border-0 bg-white"><img src="./assets/trash-can.png"
+                          width="15" /></button>
+                      </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <input type="number" />
+                    </td>
+                    <td>6500</td>
+                    <td><button class="btn-sm p-0 me-2 border-0 bg-white"><img src="./assets/trash-can.png"
+                          width="15" /></button>
+                      </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <input type="number" />
+                    </td>
+                    <td>6500</td>
+                    <td><button class="btn-sm p-0 me-2 border-0 bg-white"><img src="./assets/trash-can.png"
+                          width="15" /></button>
+                      </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <input type="number" />
+                    </td>
+                    <td>6500</td>
+                    <td><button class="btn-sm p-0 me-2 border-0 bg-white"><img src="./assets/trash-can.png"
+                          width="15" /></button>
+                      </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <input type="number" />
+                    </td>
+                    <td>6500</td>
+                    <td><button class="btn-sm p-0 me-2 border-0 bg-white"><img src="./assets/trash-can.png"
+                          width="15" /></button>
+                      </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <input type="number" />
+                    </td>
+                    <td>6500</td>
+                    <td><button class="btn-sm p-0 me-2 border-0 bg-white"><img src="./assets/trash-can.png"
+                          width="15" /></button>
+                      </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <input type="number" />
+                    </td>
+                    <td>6500</td>
+                    <td><button class="btn-sm p-0 me-2 border-0 bg-white"><img src="./assets/trash-can.png"
+                          width="15" /></button>
+                      </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="custom-select-wrapper">
+                        <input type="text" class="customInput" autocomplete="off" data-options='["Blood Test", "X-Ray", "MRI"]' />
+                        <div class="filter-dropdown"></div>
+                      </div>
+                    </td>
+                    <td>
+                      <input type="number" />
+                    </td>
+                    <td>6500</td>
+                    <td><button class="btn-sm p-0 me-2 border-0 bg-white"><img src="./assets/trash-can.png"
+                          width="15" /></button>
+                      </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer p-0 m-0 mt-2">
+          <div class="container-fluid bottom-0 w-100 py-2 bg-white">
+            <div class="row align-items-center justify-content-md-between justify-content-center">
+              <div class="col-12 text-end">
+                <button class="common-btn gray-bg-color" data-bs-dismiss="modal">Cancel</button>
+                <button class="common-btn primary-bg-color" data-bs-dismiss="modal">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <script>
-        // Handle form submission
-        document.getElementById('ipdForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const formData = new FormData(this);
-            console.log('Form submitted:', Object.fromEntries(formData));
-        });
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script>
+    // Handle form submission
+    document.getElementById('ipdForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      console.log('Form submitted:', Object.fromEntries(formData));
+    });
 
-        // Handle date/time buttons
-        document.getElementById('dateButton').addEventListener('click', function () {
-            // Here you would typically show a date picker
-            console.log('Show date picker');
-        });
+    // Handle date/time buttons
+    document.getElementById('dateButton').addEventListener('click', function () {
+      // Here you would typically show a date picker
+      console.log('Show date picker');
+    });
 
-        document.getElementById('timeButton').addEventListener('click', function () {
-            // Here you would typically show a time picker
-            console.log('Show time picker');
-        });
-    </script>
+    document.getElementById('timeButton').addEventListener('click', function () {
+      // Here you would typically show a time picker
+      console.log('Show time picker');
+    });
+  </script>
+  <script src="./js/sidebar.js"></script>
+  <script src="./js/filterable-select.js"></script>
 </body>
 
 </html>

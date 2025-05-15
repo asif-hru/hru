@@ -1,138 +1,4 @@
-/* Dashboard CSS */
-
-.filters {
-    background: white;
-    padding: 0 20px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.filter-group {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    width: 100%;
-    flex-wrap: wrap;
-}
-
-.radio-group {
-    display: flex;
-    gap: 15px;
-    padding: 5px 10px;
-}
-
-.radio-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 11px;
-    font-weight: 600;
-}
-
-.table-container {
-    max-height: 86vh;
-    overflow-x: auto;
-    background: white;
-    border-radius: 8px;
-    /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); */
-}
-
-.phone-number {
-    color: #2563eb;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.status {
-    padding: 2px 4px;
-    border-radius: 4px;
-    font-size: 11px;
-    font-weight: 500;
-    display: inline-block;
-}
-
-.status-due {
-    background-color: #fee2e2;
-    color: #dc2626;
-}
-
-.status-paid {
-    background-color: #dcfce7;
-    color: #16a34a;
-}
-
-.actions {
-    position: relative;
-}
-
-.actions-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-    padding: 5px 10px;
-}
-
-.dropdown {
-    display: none;
-    position: absolute;
-    right: 0;
-    background: white;
-    border-radius: 6px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    min-width: 150px;
-    z-index: 10000;
-}
-
-.dropdown.show {
-    display: block;
-}
-
-.dropdown a {
-    display: block;
-    padding: 10px 15px;
-    text-decoration: none;
-    color: #1e293b;
-    font-size: 14px;
-}
-
-.dropdown a:hover {
-    background-color: #f1f5f9;
-}
-
-
-.pagination {
-    color: #64748b;
-    font-size: 14px;
-}
-
-/* Dashboard responsive css */
-@media (max-width: 768px) {
-    .date-picker,
-    .search-input,
-    .select-input {
-        width: 100%;
-    }
-
-    .radio-group {
-        flex-wrap: wrap;
-    }
-}
-@media (max-width: 600px) {
-    .filter-group {
-        flex-direction: column;
-        align-items: stretch;
-    }
-}
-
 /* bed avalibility css */
-
 .select-input {
     min-width: 120px;
 }
@@ -307,7 +173,7 @@
     border-radius: 0;
 }
 .nursing-station-body .list-group .nav-link.active {
-    background-color: var(--heading-bg-color);
+    background-color: var(--secondary-color);
 }
 .nursing-station-body .list-group .my-sidebar-item.active span {
     color: #fff;
@@ -318,7 +184,7 @@
     height: calc(100vh - 122px);
 }
 .nursing-station-body .list-group div:hover {
-    background-color: var(--heading-bg-color);
+    background-color: var(--secondary-color);
 }
 .nursing-station-body .list-group div:hover span {
     color: #fff;

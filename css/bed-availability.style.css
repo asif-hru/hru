@@ -1,0 +1,220 @@
+ .select-wrapper,
+    .input-wrapper {
+      max-width: 100%;
+    }
+
+
+.filters {
+  background: white;
+  padding: 0 20px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.filter-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.radio-group {
+  display: flex;
+  gap: 15px;
+  padding: 5px 10px;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.select-input {
+  min-width: 120px;
+}
+
+.bed {
+  padding: 3px 0;
+  border-radius: 8px;
+  color: #fff;
+  margin: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.bed h2 {
+  padding: 0 5px 3px;
+  font-size: 11px;
+  font-weight: 600;
+
+}
+
+.bed p {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 5px 0;
+  border-top: 1.5px solid #fff;
+  text-transform: uppercase;
+}
+
+.bed-in-maintain {
+  background-color: #fd7e14;
+}
+
+.overflow-bed-info {
+  max-height: 110px;
+  overflow: auto;
+}
+
+.bed-status {
+  width: 10px;
+  height: 10px;
+  border-radius: 100px;
+}
+
+.bed-status-text {
+  font-size: 12px;
+  display: inline-block;
+}
+
+.bg-orange {
+  background-color: #fd7e14;
+}
+
+.patient-card {
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background: #47b2e4;
+  color: white;
+  padding: 2px 16px;
+  font-size: 11px;
+  font-weight: bold;
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.patient-name {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.patient-name h3,
+.patient-name p {
+  font-size: 12px;
+  font-weight: 600;
+  color: #000;
+}
+
+.patient-name p {
+  font-weight: 500;
+  color: #757575;
+}
+
+.patient-name p span {
+  color: #000;
+}
+
+.info-row {
+  font-size: 11px;
+  font-weight: 600;
+  color: #333;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.tool-icon {
+  width: 20px;
+  height: 20px;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.tool-icon:hover {
+  opacity: 1;
+}
+
+.header-patient-card {
+  font-size: 11px;
+  font-weight: 600;
+  background-color: #000;
+  padding: 10px;
+  color: #fff;
+}
+
+.actions {
+  position: relative;
+  margin-top: -4px;
+}
+
+.actions-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 0 10px;
+}
+
+.bed-availability-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: 100%;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  min-width: 200px;
+  z-index: 10;
+}
+
+.bed-availability-dropdown.show {
+  display: block;
+}
+
+.bed-availability-dropdown a {
+  display: block;
+  padding: 4px 15px;
+  text-decoration: none;
+  color: #1e293b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.bed-availability-dropdown a:hover {
+  background-color: #f1f5f9;
+}
+/* bed availability responsive css */
+@media (max-width: 768px) {
+  .select-wrapper,
+  .input-wrapper,
+  .search-input {
+    width: 100% !important;
+  }
+}
