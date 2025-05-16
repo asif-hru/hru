@@ -1,0 +1,194 @@
+ body {
+      background-color: #f8f9fa;
+    }
+
+    .ref-text {
+      color: #333;
+      font-size: 14px;
+    }
+
+    .small-text {
+      font-size: 12px;
+    }
+
+    .time-input-group .form-control {
+      width: 100px;
+      font-size: 12px;
+      height: 28px;
+    }
+
+    .time-btn {
+      background: none;
+      border: 1px solid #ced4da;
+      border-left: none;
+      height: 28px;
+    }
+
+
+
+    /* initial assessment */
+    .combobox-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .clear-btn {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #aaa;
+      font-weight: bold;
+    }
+
+    .input-group-custom {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .input-group-custom input::placeholder {
+      text-transform: capitalize;
+    }
+
+    .input-group-custom .combobox-wrapper {
+      flex: 1;
+    }
+
+    .collapsible-section {
+      margin-top: .5rem;
+    }
+
+    .collapsible-header {
+      cursor: pointer;
+      font-weight: bold;
+      user-select: none;
+    }
+
+    .collapsible-content {
+      margin-top: .3rem;
+      display: none;
+    }
+
+    .collapsible-content.show {
+      display: block;
+    }
+
+    input::-webkit-calendar-picker-indicator {
+      display: none;
+    }
+
+    .fixed-button {
+      z-index: 1000;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 0;
+    }
+
+    .input-wrapper label {
+      background-color: #f8f9fa;
+      left: 7px;
+    }
+
+    .input-wrapper input,
+    input,
+    textarea {
+      background-color: transparent;
+      padding: 3px;
+      border: 2px solid #cdcdcd;
+    }
+
+
+    .vital table input {
+      width: 80px;
+      height: 25px;
+    }
+
+    .vital td,
+    th {
+      text-align: center;
+      padding: 0;
+      margin: 0;
+    }
+
+    .vital .modal table tr {
+      vertical-align: middle;
+    }
+
+    .vital .table-container {
+      height: 65vh;
+      overflow: auto;
+    }
+
+    .vital .vital-data-table {
+      /* height: 33vh; */
+      overflow: auto;
+    }
+
+    .medication-administered-table {
+      /* height: 40vh; */
+      overflow: auto;
+    }
+
+    .vital .select-wrapper {
+      margin: 0;
+    }
+
+    .vital .select-wrapper select {
+      width: 100px;
+    }
+
+    .nursing-station-menu .nav-item .nav-link {
+      padding: 5px;
+    }
+
+    .main-content {
+      height: calc(100vh - 220px);
+      overflow: auto;
+    }
+
+    .nursing-station-body .list-group {
+      height: calc(100vh - 220px);
+    }
+
+
+    .create-order-tab-content .white-button-sizing {
+      padding: 3px 5px;
+      font-size: 12px;
+    }
+
+    .create-order-tab-content .table-container {
+      max-height: 23vh;
+      overflow-x: auto;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .create-order-tab-content .Pharmacy-order-list input,
+    .create-order-tab-content .Pharmacy-order-list select,
+    .create-order-tab-content .Pharmacy-order-list textarea {
+      height: 40px;
+      border: 1.5px solid #575757;
+      border-radius: 0;
+      padding-left: 0;
+    }
+
+    .create-order-tab-content .Pharmacy-order-list textarea {
+      padding: 6px 12px 6px 0;
+      margin-bottom: -6px;
+    }
+
+    .create-order-tab-content .Pharmacy-order-list.type input,
+    .create-order-tab-content .Pharmacy-order-list.quantity input {
+      width: 70px;
+    }
+
+    .create-order-tab-content .Pharmacy-order-list.notes textarea {
+      width: 250px;
+    }
+
+    .create-order-tab-content .Pharmacy-order-list.input-wrapper label,
+    .create-order-tab-content .Pharmacy-order-list.select-wrapper label {
+      left: 2px;
+    }

@@ -418,11 +418,15 @@ input[type="radio"] {
 .accordion-button:not(.collapsed) {
   color: #fff;
   box-shadow: none;
-  background-color: #47b2e4;
+  background-color: var(--secondary-color);
 }
-
 .accordion-button:not(.collapsed)::after {
-  filter: invert(1) hue-rotate(180deg);
+  background-image: url('../assets/angle-up.png');
+    filter: invert(0);
+}
+.accordion-button::after {
+  background-image: url('../assets/angle-up.png');
+  filter: invert(1);
 }
 
 /* table */
@@ -593,7 +597,7 @@ td {
 .editor {
   border: 1px solid #ccc;
   min-height: 200px;
-  padding: 10px;
+  padding: 10px 30px;
   border-top: none;
   margin-bottom: 15px;
   outline: none;
